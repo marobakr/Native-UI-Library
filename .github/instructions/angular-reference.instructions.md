@@ -597,7 +597,7 @@ Identify RTL patterns:
 ### Step 1: Component Discovery
 ```bash
 # Clone Angular library (READ ONLY)
-git clone https://github.com/Mohamed-Adel-Web/vf-UI-components.git vf-angular-reference
+git clonehttps://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components/-/tree/master vf-angular-reference
 
 # Explore structure
 ls -la projects/ui/src/lib/

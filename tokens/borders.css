@@ -1,27 +1,21 @@
 /**
  * Border Tokens
- * 
- * ⚠️ PLACEHOLDER - DO NOT USE THESE VALUES
- * 
- * These tokens will be populated from the Angular UI Library during discovery phase.
- * Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
- * 
- * To populate:
- * 1. Run: npm run discover
- * 2. Inspect Angular library for actual border values
- * 3. Extract from: projects/ui/styles/theme.css or tailwind.config.js
- * 4. Update this file with real values
+ *
+ * Extracted from: projects/ui/styles/theme.css and component *.variants.ts files
+ * (Angular source, `master` branch,
+ * https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components).
  */
 
 :root {
-  /* Border Widths - TO BE EXTRACTED */
-  /* --vf-border-width-thin: TBD; */
-  /* --vf-border-width-base: TBD; */
-  /* --vf-border-width-thick: TBD; */
+  /* Border Widths - explicit values found in component source (not a defined scale in
+     theme.css). Default `border`/`border-*` utilities are Tailwind's 1px default. */
+  --vf-border-width-thin: 1px; /* default `border` utility, used across table/drawer/sidebar/accordion */
+  --vf-border-width-base: 1.5px; /* tabs.variants.ts: `border-b-[1.5px]` / `border-e-[1.5px]` */
+  --vf-border-width-thick: 4px; /* toast.variants.ts: `border-s-4` (tone accent stripe) */
 
-  /* Border Radius - TO BE EXTRACTED */
-  /* --vf-border-radius-sm: TBD; */
-  /* --vf-border-radius-md: TBD; */
-  /* --vf-border-radius-lg: TBD; */
-  /* --vf-border-radius-full: TBD; */
+  /* Border Radius - extracted from theme.css (--radius-control/surface/overlay) */
+  --vf-border-radius-sm: 0.5rem; /* --radius-control */
+  --vf-border-radius-md: 0.75rem; /* --radius-surface */
+  --vf-border-radius-lg: 1.25rem; /* --radius-overlay */
+  --vf-border-radius-full: 9999px; /* Tailwind `rounded-full` default, used e.g. sidebar-nav badge dot */
 }

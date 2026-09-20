@@ -180,7 +180,7 @@ Status:
 
 ## 🌐 Angular Reference
 
-**Repository:** https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+**Repository:**https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components/-/tree/master
 
 **⚠️ READ ONLY** - Use for design reference, not code copying
 

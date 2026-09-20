@@ -1,31 +1,26 @@
 /**
  * Transition & Animation Tokens
- * 
- * ⚠️ PLACEHOLDER - DO NOT USE THESE VALUES
- * 
- * These tokens will be populated from the Angular UI Library during discovery phase.
- * Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
- * 
- * To populate:
- * 1. Run: npm run discover
- * 2. Inspect Angular library for actual animation values
- * 3. Extract from: projects/ui/styles/theme.css or tailwind.config.js
- * 4. Update this file with real values
+ *
+ * Extracted from: projects/ui/styles/theme.css and component *.variants.ts files
+ * (Angular source, `master` branch,
+ * https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components).
  */
 
 :root {
-  /* Durations - TO BE EXTRACTED */
-  /* --vf-transition-duration-fast: TBD; */
-  /* --vf-transition-duration-base: TBD; */
-  /* --vf-transition-duration-slow: TBD; */
+  /* Durations - extracted from theme.css (--duration-fast, --duration-base) */
+  --vf-transition-duration-fast: 120ms;
+  --vf-transition-duration-base: 200ms;
+  /* --vf-transition-duration-slow: NOT defined in theme.css - no slower duration token exists in source. */
 
-  /* Easing Functions - TO BE EXTRACTED */
-  /* --vf-transition-easing-linear: TBD; */
-  /* --vf-transition-easing-ease: TBD; */
-  /* --vf-transition-easing-smooth: TBD; */
+  /* Easing Functions - extracted from theme.css (--ease-emphasized) */
+  --vf-transition-easing-linear: linear;
+  --vf-transition-easing-ease: ease;
+  --vf-transition-easing-smooth: cubic-bezier(0.2, 0, 0, 1); /* --ease-emphasized */
 
-  /* Z-index Layers - TO BE EXTRACTED */
-  /* --vf-z-index-dropdown: TBD; */
-  /* --vf-z-index-modal: TBD; */
-  /* --vf-z-index-tooltip: TBD; */
+  /* Z-index Layers - explicit values found in component source (drawer.ts template,
+     table.variants.ts). No dropdown/tooltip z-index utility exists in source; dialogs
+     go through Angular CDK's overlay stacking, not a Tailwind z-* class. */
+  --vf-z-index-modal: 50; /* drawer.ts: panel `z-50` */
+  --vf-z-index-sticky: 10; /* table.variants.ts: tableHeadVariants sticky -> `z-10` */
+  /* --vf-z-index-dropdown / --vf-z-index-tooltip: NOT found in source - see missing-info.json. */
 }

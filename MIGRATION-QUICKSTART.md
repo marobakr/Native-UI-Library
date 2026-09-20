@@ -343,7 +343,7 @@ You: [paste the prompt]
 
 🔄 Executing: discovery / initial-scan
 1. Cloning Angular repository...
-   Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+   Source:https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components/-/tree/master
    Destination: .temp/angular-ui-library/
 2. Cloning... [progress]
 3. Repository cloned successfully

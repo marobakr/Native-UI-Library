@@ -5,7 +5,7 @@
 **The token files in `tokens/` are currently empty placeholders.**
 
 All token values must be extracted from the Angular UI Library:
-- **Repository:** https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+- **Repository:**https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components/-/tree/master
 - **Location:** `projects/ui/src/lib/foundations/` or theme configuration files
 
 ## Why Tokens Are Empty
@@ -39,7 +39,7 @@ tokens/
 
 **Step 1: Locate Token Files in Angular Repository**
 
-Visit: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+Visit:https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components/-/tree/master
 
 Look for token definitions in:
 - `projects/ui/src/lib/foundations/`
@@ -360,4 +360,4 @@ Until tokens are extracted, component development should:
 
 **Current Status:** ⚠️ Tokens are placeholders  
 **Next Action:** Extract actual values from Angular library  
-**Source:** https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+**Source:**https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components/-/tree/master

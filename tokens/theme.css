@@ -17,16 +17,9 @@
   font-size: 16px;
 }
 
-/* Dark mode support (optional) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Override tokens for dark mode */
-    /* Example:
-    --vf-color-surface: #1a1a1a;
-    --vf-color-text-primary: #ffffff;
-    */
-  }
-}
+/* Dark mode support: Angular source opts in via a `.dark` ancestor class
+   (`@custom-variant dark (&:where(.dark, .dark *))` in theme.css), not the OS
+   `prefers-color-scheme` media query. Dark overrides live in colors.css (`.dark { ... }`). */
 
 /* High contrast mode adjustments */
 @media (prefers-contrast: high) {

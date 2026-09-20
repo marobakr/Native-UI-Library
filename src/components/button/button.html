@@ -1,0 +1,99 @@
+<!--
+  vf-button
+  Source of truth: Angular `button[vfButton], a[vfButton]` (projects/ui/src/lib/button/button.ts)
+  The Angular component only sets host classes/attributes and projects content as-is
+  (template is `<ng-content />`) - there is no internal icon/label sub-structure to
+  replicate, so the native version stays a plain element with modifier classes too.
+
+  Modifier classes:
+    Variant (pick one): vf-button--primary (default) | vf-button--secondary
+                       | vf-button--outline | vf-button--ghost | vf-button--danger
+    Size (pick one):    vf-button--sm | vf-button--md (default) | vf-button--lg | vf-button--icon
+    Layout:             vf-button--full-width
+
+  States: `disabled` attribute, or `data-loading="true"` (sets aria-busy, keeps size but
+  disables interaction - mirrors the Angular `loading` input, which does not render its
+  own spinner either; bring your own spinner markup as content when loading).
+-->
+
+<!-- Primary, medium (defaults) -->
+<button type="button" class="vf-button vf-button--primary vf-button--md" data-component="button">
+  Button
+</button>
+
+<!-- Secondary -->
+<button type="button" class="vf-button vf-button--secondary vf-button--md" data-component="button">
+  Button
+</button>
+
+<!-- Outline -->
+<button type="button" class="vf-button vf-button--outline vf-button--md" data-component="button">
+  Button
+</button>
+
+<!-- Ghost -->
+<button type="button" class="vf-button vf-button--ghost vf-button--md" data-component="button">
+  Button
+</button>
+
+<!-- Danger -->
+<button type="button" class="vf-button vf-button--danger vf-button--md" data-component="button">
+  Button
+</button>
+
+<!-- Sizes -->
+<button type="button" class="vf-button vf-button--primary vf-button--sm" data-component="button">
+  Small
+</button>
+<button type="button" class="vf-button vf-button--primary vf-button--lg" data-component="button">
+  Large
+</button>
+
+<!-- Icon-only (square, no visible label - always provide an aria-label) -->
+<button
+  type="button"
+  class="vf-button vf-button--primary vf-button--icon"
+  data-component="button"
+  aria-label="Add"
+>
+  <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false">
+    <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  </svg>
+</button>
+
+<!-- Icon + label -->
+<button type="button" class="vf-button vf-button--primary vf-button--md" data-component="button">
+  <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false">
+    <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  </svg>
+  <span>Add item</span>
+</button>
+
+<!-- Full width -->
+<button
+  type="button"
+  class="vf-button vf-button--primary vf-button--md vf-button--full-width"
+  data-component="button"
+>
+  Full width
+</button>
+
+<!-- Disabled -->
+<button type="button" class="vf-button vf-button--primary vf-button--md" data-component="button" disabled>
+  Disabled
+</button>
+
+<!-- Loading (aria-busy is set by button.js from data-loading) -->
+<button
+  type="button"
+  class="vf-button vf-button--primary vf-button--md"
+  data-component="button"
+  data-loading="true"
+>
+  Loading
+</button>
+
+<!-- Link rendered as a button (Angular also supports `a[vfButton]`) -->
+<a href="#" class="vf-button vf-button--primary vf-button--md" data-component="button">
+  Link button
+</a>

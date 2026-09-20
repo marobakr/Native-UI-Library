@@ -9,7 +9,7 @@
  * Usage:
  *   npm run tokens:extract
  * 
- * Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+ * Source:https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components/-/tree/master
  * Location: projects/ui/styles/theme.css or tailwind.config.js
  * 
  * ⚠️ This is a placeholder script. Actual implementation will:
@@ -31,7 +31,7 @@ console.log('');
 console.log('To extract design tokens manually:');
 console.log('');
 console.log('1. Visit the Angular repository:');
-console.log('   https://github.com/Mohamed-Adel-Web/vf-UI-components.git');
+console.log('  https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components/-/tree/master');
 console.log('');
 console.log('2. Look for theme/token files:');
 console.log('   - projects/ui/styles/theme.css');

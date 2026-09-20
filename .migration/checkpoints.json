@@ -1,4 +1,32 @@
 {
   "version": "1.0.0",
-  "checkpoints": []
+  "checkpoints": [
+    {
+      "name": "discovery-complete",
+      "timestamp": "2026-09-20T14:20:00.000Z",
+      "phase": "discovery",
+      "summary": "Found Angular source on the `master` branch (not `main`, which is an empty scaffold) of vf-dynamic-catalog-components. Angular 22 signals-based components styled with Tailwind v4 + class-variance-authority. Extracted all explicit design tokens from projects/ui/styles/theme.css into tokens/*.css (colors, radii, shadows, motion). Discovered 8 components (button, accordion, tabs, table, sidebar-nav, drawer, dialog, toast), documented props/variants/states/a11y/dependencies in manifest.json, and built a migration order (simple components first, CDK-dependent dialog/toast last).",
+      "missingInfoCount": 5,
+      "canResume": true
+    },
+    {
+      "name": "component-button-complete",
+      "timestamp": "2026-09-20T15:20:00.000Z",
+      "phase": "component-migration",
+      "summary": "Ported the `button` directive (Angular master) to native HTML/CSS/JS: src/components/button/button.html (explicit markup for all variants/sizes/states), button.css (BEM modifiers backed by design tokens, mirrors button.variants.ts cva output), button.js (VfButton class - optional imperative API mirroring Angular's reactive inputs; no custom click event since Angular's directive doesn't emit one either), button.test.js (unit tests for the JS API), docs/components/button.md, and .migration/analysis/button.json. Also populated tokens/typography.css and tokens/spacing.css with Tailwind v4 documented defaults (registry.npmjs.org unreachable to verify by installing the package - recorded in missing-info.json) and exported VfButton from src/index.js.",
+      "missingInfoCount": 6,
+      "caveat": "button.test.js could not be executed - no node_modules and npm registry unreachable in this environment (npm ping timed out). Tests are written but unverified; flagged in missing-info.json.",
+      "canResume": true
+    },
+    {
+      "name": "component-accordion-complete",
+      "timestamp": "2026-09-20T16:20:00.000Z",
+      "phase": "component-migration",
+      "summary": "Ported `vf-accordion`/`vf-accordion-item` (Angular master) to native HTML/CSS/JS: src/components/accordion/accordion.html (group + standalone item markup, explicit ids/aria wiring), accordion.css (BEM classes backed by tokens, mirrors accordion.variants.ts + the accordion-content-transition grid-rows animation), accordion.js (VfAccordionItem for local toggle behavior + VfAccordion for group single/multiple-open exclusivity via a bubbling 'vf-accordion-item:toggle' event), accordion.test.js, docs/components/accordion.md, and .migration/analysis/accordion.json. Exported VfAccordion/VfAccordionItem/initAccordions from src/index.js. Verified live in the browser via a playground demo section served with `python -m http.server` (no npm/vite available): initial expanded state, disabled item, and single-open exclusivity (opening one item closes the previously-open one) all confirmed visually and via accessibility snapshot.",
+      "missingInfoCount": 6,
+      "caveat": "accordion.test.js could not be executed - no node_modules and npm registry unreachable in this environment. Tests are written but unverified.",
+      "canResume": true
+    }
+  ]
 }
+

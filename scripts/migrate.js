@@ -149,7 +149,7 @@ function generateMigrationPrompt(state, mode = 'start') {
   prompt.push('   - Report any missing information found');
   prompt.push('   - Let me know when you reach a checkpoint');
   prompt.push('');
-  prompt.push('**Angular Source:** https://github.com/Mohamed-Adel-Web/vf-UI-components.git');
+  prompt.push('**Angular Source:**https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components/-/tree/master');
   prompt.push('');
   prompt.push('---');
   prompt.push('');

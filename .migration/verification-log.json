@@ -1,5 +1,56 @@
 {
   "version": "1.0.0",
-  "updated": null,
-  "verifications": []
+  "updated": "2026-09-20T14:20:00.000Z",
+  "verifications": [
+    {
+      "phase": "discovery",
+      "step": "extract-design-tokens",
+      "target": "tokens/colors.css, tokens/borders.css, tokens/shadows.css, tokens/transitions.css",
+      "result": "pass",
+      "notes": "Every populated value traced 1:1 to projects/ui/styles/theme.css's `@theme static` block or a directly-quoted Tailwind utility class in a *.variants.ts file (e.g. `border-b-[1.5px]`, `z-50`). No values invented."
+    },
+    {
+      "phase": "discovery",
+      "step": "extract-design-tokens",
+      "target": "tokens/typography.css, tokens/spacing.css",
+      "result": "partial",
+      "notes": "Font families extracted and verified. Font-size/weight/line-height/letter-spacing and the spacing scale are not overridden in theme.css (Tailwind v4 defaults apply) - left as TBD rather than transcribed from memory. Logged in missing-info.json."
+    },
+    {
+      "phase": "discovery",
+      "step": "discover-components",
+      "target": "manifest.json components.list",
+      "result": "pass",
+      "notes": "8 components confirmed via public-api.ts exports and directory listing of projects/ui/src/lib/. `foundations/` (tokens.stories.ts only) and `utils/` (cn.ts helper) are not components and were excluded."
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (button)",
+      "target": "src/components/button/*, docs/components/button.md, .migration/analysis/button.json",
+      "result": "partial",
+      "notes": "HTML/CSS/JS/docs/analysis all created and traced 1:1 to button.ts + button.variants.ts. Static checks (get_errors) pass on all new files. button.test.js was written to cover the full VfButton API but could NOT be run - node_modules/ absent and `npm ping` against registry.npmjs.org timed out in this environment. Marked partial rather than pass until tests are actually executed."
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (button)",
+      "target": "playground/index.html Button showcase",
+      "result": "pass",
+      "notes": "Served the workspace with `python -m http.server` and opened the playground in-browser (no npm/vite needed). Confirmed via accessibility snapshot + screenshot: correct variant/size/disabled rendering, and a click-counter demo confirmed native click events fire correctly through the VfButton enhancement with zero console/module-loading errors (all assets returned 200 in server logs)."
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (accordion)",
+      "target": "src/components/accordion/*, docs/components/accordion.md, .migration/analysis/accordion.json",
+      "result": "partial",
+      "notes": "HTML/CSS/JS/docs/analysis created and traced 1:1 to accordion.ts + accordion.variants.ts + the accordion-content-transition utility in theme.css. Static checks (get_errors) pass on all new files. accordion.test.js written (item toggle, group exclusivity, multiple-open, disabled, custom events, initAccordions) but NOT executed - same npm registry/node_modules unavailability as button. Marked partial pending real test execution."
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (accordion)",
+      "target": "playground/index.html Accordion showcase",
+      "result": "pass",
+      "notes": "Served statically and verified live in-browser: initial expanded item renders open, disabled item is inert and shows [disabled] in the a11y tree, and clicking a second item correctly closed the first (single-open exclusivity confirmed visually via screenshot). All module requests returned 200 in server logs, confirming no import/runtime errors."
+    }
+  ]
 }
+

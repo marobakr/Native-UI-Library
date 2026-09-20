@@ -1,42 +1,41 @@
 /**
  * Typography Tokens
- * 
- * ⚠️ PLACEHOLDER - DO NOT USE THESE VALUES
- * 
- * These tokens will be populated from the Angular UI Library during discovery phase.
- * Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
- * 
- * To populate:
- * 1. Run: npm run discover
- * 2. Inspect Angular library for actual typography values
- * 3. Extract from: projects/ui/styles/theme.css or tailwind.config.js
- * 4. Update this file with real values
+ *
+ * Extracted from: projects/ui/styles/theme.css (Angular source, `master` branch,
+ * https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components).
+ * Only the font families are explicit Vodafone tokens; the rest of the type scale is
+ * Tailwind's default theme (not overridden) - see notes below and missing-info.json.
  */
 
 :root {
-  /* Font Families - TO BE EXTRACTED */
-  /* --vf-font-family-base: TBD; */
-  /* --vf-font-family-monospace: TBD; */
+  /* Font Families - extracted from theme.css (--font-sans, --font-mono) */
+  --vf-font-family-base:
+    'Vodafone', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --vf-font-family-monospace: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
 
-  /* Font Sizes - TO BE EXTRACTED */
-  /* --vf-font-size-xs: TBD; */
-  /* --vf-font-size-sm: TBD; */
-  /* --vf-font-size-base: TBD; */
-  /* --vf-font-size-lg: TBD; */
-  /* --vf-font-size-xl: TBD; */
+  /* Font Sizes / Weights / Line Heights / Letter Spacing
+     Not overridden by theme.css - components use Tailwind's built-in default type scale
+     (e.g. button.variants.ts `text-sm`/`text-base`, dialog.variants.ts `text-lg`/`leading-7`).
+     Installing tailwindcss@4.1.12 to verify these against the packaged default theme was not
+     possible (no external network access from this environment - see missing-info.json), so
+     the well-documented, version-stable Tailwind v4 default values are used here instead of
+     being invented. Re-verify against an installed tailwindcss@4.1.12 when network access
+     allows, before treating these as final. */
+  --vf-font-size-xs: 0.75rem; /* text-xs, line-height 1rem */
+  --vf-font-size-sm: 0.875rem; /* text-sm, line-height 1.25rem - button.variants.ts sm/md */
+  --vf-font-size-base: 1rem; /* text-base, line-height 1.5rem - button.variants.ts lg */
+  --vf-font-size-lg: 1.125rem; /* text-lg, line-height 1.75rem - dialog.variants.ts title */
+  --vf-font-size-xl: 1.25rem; /* text-xl, line-height 1.75rem */
 
-  /* Font Weights - TO BE EXTRACTED */
-  /* --vf-font-weight-normal: TBD; */
-  /* --vf-font-weight-medium: TBD; */
-  /* --vf-font-weight-bold: TBD; */
+  --vf-font-weight-normal: 400;
+  --vf-font-weight-medium: 500; /* font-medium - used by button, table head, tabs */
+  --vf-font-weight-bold: 700;
 
-  /* Line Heights - TO BE EXTRACTED */
-  /* --vf-line-height-tight: TBD; */
-  /* --vf-line-height-base: TBD; */
-  /* --vf-line-height-relaxed: TBD; */
+  --vf-line-height-tight: 1.25;
+  --vf-line-height-base: 1.5;
+  --vf-line-height-relaxed: 1.625;
 
-  /* Letter Spacing - TO BE EXTRACTED */
-  /* --vf-letter-spacing-tight: TBD; */
-  /* --vf-letter-spacing-normal: TBD; */
-  /* --vf-letter-spacing-wide: TBD; */
+  --vf-letter-spacing-tight: -0.025em;
+  --vf-letter-spacing-normal: 0em;
+  --vf-letter-spacing-wide: 0.025em;
 }

@@ -162,7 +162,7 @@ npm run build            # Build for production
 ### Step 1: Extract Design Tokens ⚠️ REQUIRED FIRST
 
 **Option A: Manual (Using GitHub)**
-1. Visit: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+1. Visit:https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components/-/tree/master
 2. Navigate to: `projects/ui/src/lib/foundations/` or theme files
 3. Extract actual values
 4. Update `tokens/*.css` files
@@ -243,7 +243,7 @@ npm run status
 🟢 Components Completed: 0
 ⚠️  Design Tokens Extracted: 0 (placeholders only)
 
-Angular Repository: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+Angular Repository:https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components/-/tree/master
 Last Discovery: 2026-09-20
 ```
 

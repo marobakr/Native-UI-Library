@@ -248,7 +248,7 @@ tokens/
 ```
 
 **To populate tokens:**
-1. Inspect Angular library: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+1. Inspect Angular library:https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components/-/tree/master
 2. Extract actual Vodafone design values
 3. Update token files
 
@@ -406,7 +406,7 @@ Before marking a component complete:
 - Liferay Integration Guide: `.github/instructions/liferay.instructions.md`
 
 ### External
-- Angular UI Library: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+- Angular UI Library:https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components/-/tree/master
 - WCAG 2.1 Guidelines: https://www.w3.org/WAI/WCAG21/quickref/
 - MDN Web Docs: https://developer.mozilla.org/
 - Web.dev: https://web.dev/

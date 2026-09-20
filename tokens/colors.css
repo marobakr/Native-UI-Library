@@ -1,44 +1,77 @@
 /**
  * Color Tokens
- * 
- * ⚠️ PLACEHOLDER - DO NOT USE THESE VALUES
- * 
- * These tokens will be populated from the Angular UI Library during discovery phase.
- * Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
- * 
- * To populate:
- * 1. Run: npm run discover
- * 2. Inspect Angular library for actual color values
- * 3. Extract from: projects/ui/styles/theme.css or tailwind.config.js
- * 4. Update this file with real values
+ *
+ * Extracted from: projects/ui/styles/theme.css (Angular source, `master` branch,
+ * https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components).
+ * Angular uses Tailwind v4 `@theme static` with oklch() colors - values copied verbatim.
+ * Semantic aliases (primary/secondary/surface/border/focus/overlay) are inferred from how
+ * these scales are consumed in button.variants.ts, dialog/overlay.variants.ts,
+ * table.variants.ts, sidebar-nav.variants.ts and drawer.variants.ts (see comments below).
  */
 
 :root {
-  /* Brand Colors - TO BE EXTRACTED */
-  /* --vf-color-primary: TBD; */
-  /* --vf-color-primary-hover: TBD; */
-  /* --vf-color-secondary: TBD; */
-  
-  /* Text Colors - TO BE EXTRACTED */
-  /* --vf-color-text-primary: TBD; */
-  /* --vf-color-text-secondary: TBD; */
-  
-  /* Surface Colors - TO BE EXTRACTED */
-  /* --vf-color-surface: TBD; */
-  /* --vf-color-surface-secondary: TBD; */
-  
-  /* Semantic Colors - TO BE EXTRACTED */
-  /* --vf-color-success: TBD; */
-  /* --vf-color-warning: TBD; */
-  /* --vf-color-error: TBD; */
-  /* --vf-color-info: TBD; */
-  
-  /* Border Colors - TO BE EXTRACTED */
-  /* --vf-color-border: TBD; */
-  
-  /* Focus Colors - TO BE EXTRACTED */
-  /* --vf-color-focus: TBD; */
-  
-  /* Overlay/Backdrop - TO BE EXTRACTED */
-  /* --vf-color-overlay: TBD; */
+  /* Brand scale (--color-brand-*) */
+  --vf-color-brand-50: oklch(0.971 0.019 17.4);
+  --vf-color-brand-100: oklch(0.936 0.041 17.9);
+  --vf-color-brand-200: oklch(0.885 0.079 18.3);
+  --vf-color-brand-300: oklch(0.808 0.135 19.6);
+  --vf-color-brand-400: oklch(0.704 0.191 22.2);
+  --vf-color-brand-500: oklch(0.615 0.235 25.3);
+  --vf-color-brand-600: oklch(0.551 0.232 27.3);
+  --vf-color-brand-700: oklch(0.47 0.198 28.1);
+  --vf-color-brand-800: oklch(0.408 0.163 28.4);
+  --vf-color-brand-900: oklch(0.362 0.135 28.2);
+  --vf-color-brand-950: oklch(0.21 0.089 27.6);
+
+  /* Ink (neutral) scale (--color-ink-*) */
+  --vf-color-ink-50: oklch(0.985 0 0);
+  --vf-color-ink-100: oklch(0.967 0.001 286.4);
+  --vf-color-ink-200: oklch(0.92 0.004 286.3);
+  --vf-color-ink-300: oklch(0.871 0.006 286.3);
+  --vf-color-ink-400: oklch(0.705 0.015 286.1);
+  --vf-color-ink-500: oklch(0.552 0.014 285.9);
+  --vf-color-ink-600: oklch(0.442 0.017 285.8);
+  --vf-color-ink-700: oklch(0.37 0.013 285.8);
+  --vf-color-ink-800: oklch(0.274 0.006 286);
+  --vf-color-ink-900: oklch(0.21 0.006 285.9);
+  --vf-color-ink-950: oklch(0.141 0.005 285.8);
+
+  /* Semantic (--color-success/warning/danger/info) */
+  --vf-color-success: oklch(0.627 0.194 149.2);
+  --vf-color-warning: oklch(0.769 0.188 70.1);
+  --vf-color-error: oklch(0.577 0.245 27.3); /* source token name: --color-danger */
+  --vf-color-info: oklch(0.623 0.214 259.8);
+
+  /* Brand Colors - aliases (button.variants.ts: variant="primary" -> bg-brand-600/hover:bg-brand-700) */
+  --vf-color-primary: var(--vf-color-brand-600);
+  --vf-color-primary-hover: var(--vf-color-brand-700);
+  --vf-color-secondary: var(--vf-color-ink-100); /* button.variants.ts: variant="secondary" -> bg-ink-100 */
+
+  /* Text Colors - aliases (ink-950 is the default text color; ink-600 used for secondary/description text) */
+  --vf-color-text-primary: var(--vf-color-ink-950);
+  --vf-color-text-secondary: var(--vf-color-ink-600);
+
+  /* Surface Colors - aliases: elevated surfaces (dialog/toast) use white; recessed surfaces
+     (table, sidebar-nav, accordion item, drawer) use ink-50 */
+  --vf-color-surface: #ffffff;
+  --vf-color-surface-secondary: var(--vf-color-ink-50);
+
+  /* Border Colors - alias (ink-200 is the light-mode border used across table/drawer/sidebar/tabs) */
+  --vf-color-border: var(--vf-color-ink-200);
+
+  /* Focus Colors - alias (theme.css `focus-ring` utility: outline-color: var(--color-brand-600)) */
+  --vf-color-focus: var(--vf-color-brand-600);
+
+  /* Overlay/Backdrop - alias (overlay.variants.ts backdropVariants: bg-ink-950/60) */
+  --vf-color-overlay: oklch(0.141 0.005 285.8 / 0.6);
+}
+
+/* Angular source uses class-based dark mode (`@custom-variant dark (&:where(.dark, .dark *))`),
+   not `prefers-color-scheme`. Applying `.dark` on any ancestor opts an app into dark mode. */
+.dark {
+  --vf-color-text-primary: var(--vf-color-ink-50);
+  --vf-color-text-secondary: var(--vf-color-ink-400);
+  --vf-color-surface: var(--vf-color-ink-900);
+  --vf-color-surface-secondary: var(--vf-color-ink-950);
+  --vf-color-border: var(--vf-color-ink-800);
 }

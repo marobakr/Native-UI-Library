@@ -1,0 +1,112 @@
+<!--
+  vf-tabs / button[vfTab] / vf-tab-panel
+  Source of truth: Angular `vf-tabs` + `button[vfTab]` + `vf-tab-panel`
+  (projects/ui/src/lib/tabs/tabs.ts)
+
+  Structure: a `role="tablist"` container of `role="tab"` buttons, plus one or more
+  `role="tabpanel"` elements as SIBLINGS (not nested inside the tablist - matches
+  Angular, where panels usually sit next to `<vf-tabs>` rather than inside it).
+  Tabs and panels are linked purely by id (`aria-controls` <-> `id`, `aria-labelledby`
+  <-> tab id), exactly like the Angular version - accordion.js and tabs.js do not
+  require any particular DOM nesting between the two.
+
+  Required ids/attrs (author-set, no runtime id-generation - HTML-first architecture):
+    tab:   id="<group>-tab-<value>"  aria-controls="<group>-panel-<value>"
+           aria-selected="true|false" tabindex="0|-1" data-value="<value>"
+    panel: id="<group>-panel-<value>" aria-labelledby="<group>-tab-<value>" hidden (if not active)
+
+  Modifiers:
+    .vf-tabs--vertical            on the root (default: horizontal)
+    .vf-tabs__tab--selected       on the active tab button
+    disabled attribute            on a disabled tab button (also skips it in arrow-key navigation)
+
+  Keyboard (wired by tabs.js, mirrors Angular exactly - all 4 arrows work regardless
+  of orientation): ArrowRight/ArrowDown = next enabled tab, ArrowLeft/ArrowUp = previous
+  enabled tab (wraps), Home/End = first/last enabled tab. Click selects directly.
+-->
+
+<!-- Horizontal (default) -->
+<div class="vf-tabs" data-component="tabs" role="tablist" aria-orientation="horizontal" aria-label="Account settings">
+  <button
+    type="button"
+    class="vf-tabs__tab vf-tabs__tab--selected"
+    role="tab"
+    id="vf-tabs-1-tab-profile"
+    aria-controls="vf-tabs-1-panel-profile"
+    aria-selected="true"
+    tabindex="0"
+    data-value="profile"
+  >
+    Profile
+  </button>
+  <button
+    type="button"
+    class="vf-tabs__tab"
+    role="tab"
+    id="vf-tabs-1-tab-billing"
+    aria-controls="vf-tabs-1-panel-billing"
+    aria-selected="false"
+    tabindex="-1"
+    data-value="billing"
+  >
+    Billing
+  </button>
+  <button
+    type="button"
+    class="vf-tabs__tab"
+    role="tab"
+    id="vf-tabs-1-tab-security"
+    aria-controls="vf-tabs-1-panel-security"
+    aria-selected="false"
+    tabindex="-1"
+    data-value="security"
+    disabled
+  >
+    Security
+  </button>
+</div>
+
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-1-panel-profile" aria-labelledby="vf-tabs-1-tab-profile" tabindex="0">
+  Update your name, email, and photo.
+</div>
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-1-panel-billing" aria-labelledby="vf-tabs-1-tab-billing" tabindex="0" hidden>
+  Manage payment methods and invoices.
+</div>
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-1-panel-security" aria-labelledby="vf-tabs-1-tab-security" tabindex="0" hidden>
+  Security settings are unavailable for this account.
+</div>
+
+<!-- Vertical -->
+<div class="vf-tabs vf-tabs--vertical" data-component="tabs" role="tablist" aria-orientation="vertical" aria-label="Documentation sections">
+  <button
+    type="button"
+    class="vf-tabs__tab vf-tabs__tab--selected"
+    role="tab"
+    id="vf-tabs-2-tab-overview"
+    aria-controls="vf-tabs-2-panel-overview"
+    aria-selected="true"
+    tabindex="0"
+    data-value="overview"
+  >
+    Overview
+  </button>
+  <button
+    type="button"
+    class="vf-tabs__tab"
+    role="tab"
+    id="vf-tabs-2-tab-api"
+    aria-controls="vf-tabs-2-panel-api"
+    aria-selected="false"
+    tabindex="-1"
+    data-value="api"
+  >
+    API
+  </button>
+</div>
+
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-2-panel-overview" aria-labelledby="vf-tabs-2-tab-overview" tabindex="0">
+  Overview content.
+</div>
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-2-panel-api" aria-labelledby="vf-tabs-2-tab-api" tabindex="0" hidden>
+  API reference content.
+</div>

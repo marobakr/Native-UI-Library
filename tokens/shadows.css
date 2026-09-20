@@ -1,26 +1,20 @@
 /**
  * Shadow Tokens
- * 
- * ⚠️ PLACEHOLDER - DO NOT USE THESE VALUES
- * 
- * These tokens will be populated from the Angular UI Library during discovery phase.
- * Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
- * 
- * To populate:
- * 1. Run: npm run discover
- * 2. Inspect Angular library for actual shadow values
- * 3. Extract from: projects/ui/styles/theme.css or tailwind.config.js
- * 4. Update this file with real values
+ *
+ * Extracted from: projects/ui/styles/theme.css (Angular source, `master` branch,
+ * https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components).
  */
 
 :root {
-  /* Box Shadows - TO BE EXTRACTED */
-  /* --vf-shadow-none: TBD; */
-  /* --vf-shadow-sm: TBD; */
-  /* --vf-shadow-md: TBD; */
-  /* --vf-shadow-lg: TBD; */
-  /* --vf-shadow-xl: TBD; */
+  /* Box Shadows - extracted from theme.css (--shadow-control, --shadow-overlay) */
+  --vf-shadow-none: none;
+  --vf-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.06); /* --shadow-control: buttons, table container */
+  --vf-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* --shadow-overlay: drawer, floating surfaces */
+  /* --vf-shadow-md / --vf-shadow-xl: NOT defined in theme.css - components only ever use
+     `shadow-control` or `shadow-overlay` (or Tailwind's default `shadow-xl` on the dialog/
+     drawer modal-surface, `shadow-lg` on toasts/floating menus). See missing-info.json. */
 
-  /* Focus Shadows - TO BE EXTRACTED */
-  /* --vf-shadow-focus: TBD; */
+  /* Focus Shadows - theme.css uses an outline-based `focus-ring` utility (2px solid
+     transparent, outline-color: var(--color-brand-600) on :focus-visible), not a
+     box-shadow. No --shadow-focus equivalent exists in source. */
 }

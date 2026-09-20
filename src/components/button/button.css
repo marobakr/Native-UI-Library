@@ -1,0 +1,120 @@
+/**
+ * vf-button
+ *
+ * Verified against: projects/ui/src/lib/button/button.ts + button.variants.ts
+ * (Angular source, `master` branch, vf-dynamic-catalog-components).
+ * Angular styles the button entirely with Tailwind utility classes via `cva()` - this
+ * file reproduces the same computed styles using design tokens instead of utility classes.
+ */
+
+.vf-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--vf-space-sm); /* gap-2 */
+  font-family: var(--vf-font-family-base);
+  font-weight: var(--vf-font-weight-medium); /* font-medium */
+  white-space: nowrap;
+  user-select: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--vf-border-radius-sm); /* rounded-control */
+  transition: background-color 150ms ease, color 150ms ease, opacity 150ms ease; /* transition-colors (Tailwind default duration) */
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.vf-button:focus-visible {
+  outline-color: var(--vf-color-focus); /* focus-ring utility */
+}
+
+.vf-button:disabled,
+.vf-button[aria-disabled='true'] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Variants */
+
+.vf-button--primary {
+  background-color: var(--vf-color-primary);
+  color: #ffffff;
+  box-shadow: var(--vf-shadow-sm); /* shadow-control */
+}
+
+.vf-button--primary:hover:not(:disabled) {
+  background-color: var(--vf-color-primary-hover);
+}
+
+.vf-button--secondary {
+  background-color: var(--vf-color-secondary);
+  color: var(--vf-color-ink-900);
+}
+
+.vf-button--secondary:hover:not(:disabled) {
+  background-color: var(--vf-color-ink-200);
+}
+
+.vf-button--outline {
+  background-color: transparent;
+  color: var(--vf-color-ink-900);
+  border: 1px solid var(--vf-color-ink-300);
+}
+
+.vf-button--outline:hover:not(:disabled) {
+  background-color: var(--vf-color-ink-50);
+}
+
+.vf-button--ghost {
+  background-color: transparent;
+  color: var(--vf-color-ink-900);
+}
+
+.vf-button--ghost:hover:not(:disabled) {
+  background-color: var(--vf-color-ink-100);
+}
+
+.vf-button--danger {
+  background-color: var(--vf-color-error);
+  color: #ffffff;
+  box-shadow: var(--vf-shadow-sm); /* shadow-control */
+}
+
+.vf-button--danger:hover:not(:disabled) {
+  filter: brightness(0.95); /* hover:brightness-95 */
+}
+
+/* Sizes */
+
+.vf-button--sm {
+  height: 2rem; /* h-8 */
+  padding-inline: 0.75rem; /* px-3 */
+  font-size: var(--vf-font-size-sm);
+}
+
+.vf-button--md {
+  height: 2.5rem; /* h-10 */
+  padding-inline: var(--vf-space-md); /* px-4 */
+  font-size: var(--vf-font-size-sm);
+}
+
+.vf-button--lg {
+  height: 3rem; /* h-12 */
+  padding-inline: var(--vf-space-lg); /* px-6 */
+  font-size: var(--vf-font-size-base);
+}
+
+.vf-button--icon {
+  height: 2.5rem; /* h-10 */
+  width: 2.5rem; /* w-10 */
+  padding: 0;
+}
+
+/* Layout */
+
+.vf-button--full-width {
+  width: 100%;
+}
+
+/* RTL: layout is logical (gap/padding-inline/justify-content) so no overrides are needed. */

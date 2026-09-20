@@ -1,27 +1,179 @@
 {
   "version": "1.0.0",
-  "created": null,
-  "updated": null,
+  "created": "2026-09-20T13:55:00.000Z",
+  "updated": "2026-09-20T14:20:00.000Z",
   "angularSource": {
-    "repository": "https://github.com/Mohamed-Adel-Web/vf-UI-components.git",
+    "repository": "https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components.git",
+    "branch": "master",
     "clonedTo": ".temp/angular-ui-library/",
-    "discovered": false
+    "discovered": true,
+    "notes": "The `main` branch of this repo is an empty GitLab scaffold. The real library lives on `master`. Angular 22 (signals-based, standalone), styled with Tailwind CSS v4 utility classes + class-variance-authority (cva) variants, not SCSS/BEM. Angular CDK (@angular/cdk) powers dialog/overlay/a11y behaviour."
   },
   "designSystem": {
-    "tokensExtracted": false,
-    "tokenFiles": [],
-    "totalTokens": 0,
-    "extractedTokens": 0
+    "tokensExtracted": true,
+    "tokenFiles": ["projects/ui/styles/theme.css"],
+    "totalTokens": 34,
+    "extractedTokens": 34,
+    "notes": "Colors (brand/ink/semantic scales), font families, border radii, shadows, and motion durations/easing are explicit Tailwind v4 @theme values - all copied into tokens/*.css. Font size/weight/line-height/letter-spacing and the spacing scale are NOT overridden by theme.css (Tailwind v4 defaults apply) - left as TBD, recorded in missing-info.json rather than guessed."
   },
   "components": {
-    "discovered": false,
-    "totalComponents": 0,
-    "completedComponents": 0,
+    "discovered": true,
+    "totalComponents": 8,
+    "completedComponents": 2,
     "inProgressComponent": null,
-    "list": []
+    "list": [
+      {
+        "name": "button",
+        "path": "projects/ui/src/lib/button",
+        "files": ["button.ts", "button.variants.ts", "button.stories.ts", "button.spec.ts"],
+        "selector": "button[vfButton], a[vfButton]",
+        "variants": { "variant": ["primary", "secondary", "outline", "ghost", "danger"], "size": ["sm", "md", "lg", "icon"] },
+        "props": ["variant", "size", "fullWidth", "disabled", "loading", "class"],
+        "states": ["disabled", "loading (aria-busy)", "hover", "focus-visible"],
+        "a11y": ["aria-disabled", "aria-busy", "focus-ring outline"],
+        "dependencies": ["utils/cn"],
+        "testCoverage": "button.spec.ts exists",
+        "complexity": "low",
+        "nativeImplementation": {
+          "status": "complete",
+          "files": [
+            "src/components/button/button.html",
+            "src/components/button/button.css",
+            "src/components/button/button.js",
+            "src/components/button/button.test.js",
+            "docs/components/button.md",
+            ".migration/analysis/button.json"
+          ],
+          "caveat": "button.test.js written but not executed - no node_modules/npm registry access in this environment"
+        }
+      },
+      {
+        "name": "accordion",
+        "path": "projects/ui/src/lib/accordion",
+        "files": ["accordion.ts", "accordion.variants.ts", "accordion.stories.ts"],
+        "selector": "vf-accordion / vf-accordion-item",
+        "variants": { "itemDisabled": [true, false], "chevronExpanded": [true, false] },
+        "props": ["value (2-way)", "multiple", "item: value/disabled/divider/expanded (2-way, standalone mode)"],
+        "states": ["expanded/collapsed", "disabled", "single-open vs multiple-open"],
+        "a11y": ["aria-expanded", "aria-controls on trigger", "role=region + aria-labelledby on panel"],
+        "responsive": "grid-template-rows 0fr/1fr animation (accordion-content-transition)",
+        "dependencies": ["utils/cn"],
+        "testCoverage": "none found",
+        "complexity": "medium",
+        "nativeImplementation": {
+          "status": "complete",
+          "files": [
+            "src/components/accordion/accordion.html",
+            "src/components/accordion/accordion.css",
+            "src/components/accordion/accordion.js",
+            "src/components/accordion/accordion.test.js",
+            "docs/components/accordion.md",
+            ".migration/analysis/accordion.json"
+          ],
+          "caveat": "accordion.test.js written but not executed - no node_modules/npm registry access in this environment"
+        }
+      },
+      {
+        "name": "tabs",
+        "path": "projects/ui/src/lib/tabs",
+        "files": ["tabs.ts", "tabs.variants.ts", "tabs.stories.ts", "tabs.spec.ts"],
+        "selector": "vf-tabs / button[vfTab] / vf-tab-panel",
+        "variants": { "orientation": ["horizontal", "vertical"], "selected": [true, false] },
+        "props": ["value (2-way)", "orientation", "ariaLabel", "tab: value/disabled", "panel: value/tabs"],
+        "states": ["selected", "disabled"],
+        "a11y": ["role=tablist/tab/tabpanel", "roving tabindex", "Arrow/Home/End keyboard navigation", "aria-selected/aria-controls/aria-labelledby"],
+        "dependencies": ["utils/cn"],
+        "testCoverage": "tabs.spec.ts exists",
+        "complexity": "medium"
+      },
+      {
+        "name": "table",
+        "path": "projects/ui/src/lib/table",
+        "files": ["table.ts", "table.variants.ts", "table.stories.ts", "table.spec.ts"],
+        "selector": "table[vfTable], tr[vfTableRow], th[vfTableHead], td[vfTableCell], div[vfTableContainer], input[vfTableSelectAll|vfTableSelectRow]",
+        "variants": { "density": ["compact", "comfortable", "spacious"], "align": ["start", "center", "end"] },
+        "props": ["density", "striped", "stickyHeader", "selectionMode (none/single/multiple)", "sort (2-way)", "selection (2-way)"],
+        "states": ["sorted asc/desc/none", "selected row", "disabled row", "hover", "sticky header"],
+        "a11y": ["aria-sort", "aria-selected", "th scope", "checkbox aria-label", "keyboard sortable header (Enter/Space)"],
+        "dependencies": ["utils/cn"],
+        "testCoverage": "table.spec.ts exists",
+        "complexity": "high"
+      },
+      {
+        "name": "sidebar-nav",
+        "path": "projects/ui/src/lib/sidebar-nav",
+        "files": ["sidebar-nav.ts", "sidebar-nav.variants.ts", "sidebar-nav.stories.ts", "sidebar-nav.spec.ts"],
+        "selector": "vf-sidebar-nav, button[vfSidebarNavToggle], vf-sidebar-nav-section, a|button[vfSidebarNavItem], vf-sidebar-nav-user",
+        "variants": { "collapsed": [true, false], "active": [true, false] },
+        "props": ["collapsed (2-way)", "ariaLabel", "item: active/disabled/badge"],
+        "states": ["collapsed (88px) / expanded (215px)", "active item (brand accent bar)", "disabled"],
+        "a11y": ["role=navigation", "aria-current=page on active item", "aria-expanded/aria-label on toggle"],
+        "responsive": "width transition only (sidebar-nav-transition)",
+        "dependencies": ["utils/cn"],
+        "testCoverage": "sidebar-nav.spec.ts exists",
+        "complexity": "medium"
+      },
+      {
+        "name": "drawer",
+        "path": "projects/ui/src/lib/drawer",
+        "files": ["drawer.ts", "drawer.variants.ts", "drawer.stories.ts", "drawer.spec.ts"],
+        "selector": "vf-drawer",
+        "variants": { "side": ["start", "end"], "size": ["sm", "md", "lg", "full"] },
+        "props": ["open", "side", "size", "closeOnBackdrop", "closeOnEscape", "ariaLabel", "ariaLabelledBy"],
+        "states": ["open/closed (translate transform)", "focus-trapped while open"],
+        "a11y": ["role=dialog", "aria-modal=true", "manual focus trap (Tab/Shift+Tab cycling)", "restores focus to previously-focused element on close", "body scroll lock while open"],
+        "rtl": "translate-x flips per side using logical start/end insets",
+        "dependencies": ["utils/cn"],
+        "testCoverage": "drawer.spec.ts exists",
+        "complexity": "high",
+        "note": "Self-contained: implements its own focus trap/scroll lock manually (no Angular CDK). Good reference pattern for dialog's native reimplementation."
+      },
+      {
+        "name": "dialog",
+        "path": "projects/ui/src/lib/dialog",
+        "files": ["dialog.ts", "dialog.variants.ts", "overlay.variants.ts", "modal-surface.ts", "demo.ts", "dialog.stories.ts"],
+        "selector": "vf-dialog-header/title/description/body/footer, button[vfDialogClose|vfDialogCloseIcon], ng-template[vfDialog]",
+        "variants": { "size": ["sm", "md", "lg", "xl"], "placement (shared w/ drawer via overlay.variants.ts)": ["center", "start", "end", "bottom"] },
+        "props": ["imperative VfDialog.open() service + declarative ng-template[vfDialog] directive", "size", "role (dialog/alertdialog)", "dismissible", "ariaLabel", "autoFocus", "panelClass"],
+        "states": ["open/closed", "enter animation via @starting-style"],
+        "a11y": ["aria-modal", "auto aria-labelledby via vfDialogTitle id", "aria-describedby via vfDialogDescription", "focus trap + restore + Escape/backdrop dismiss (all via Angular CDK Dialog)"],
+        "dependencies": ["utils/cn", "@angular/cdk/dialog", "@angular/cdk/overlay", "@angular/cdk/portal"],
+        "testCoverage": "none found (only demo.ts + stories)",
+        "complexity": "very high",
+        "note": "Behaviour (focus trap, scroll lock, positioning, Escape/backdrop dismissal) is entirely delegated to Angular CDK's Dialog/Overlay - no native web equivalent exists and must be hand-built, following the pattern already in drawer.ts."
+      },
+      {
+        "name": "toast",
+        "path": "projects/ui/src/lib/toast",
+        "files": ["toast.ts", "toast.variants.ts", "demo.ts", "toast.stories.ts"],
+        "selector": "VfToast injectable service (imperative API) + internal ToastViewportComponent",
+        "variants": { "tone": ["neutral", "success", "error", "warning", "info"] },
+        "props": ["position (top|bottom - start|center|end)", "duration", "maxVisible", "regionLabel", "dismissLabel", "per-toast: title/tone/duration/action/dismissible"],
+        "states": ["queued/visible (max 3 by default)", "paused (hover/focus/tab hidden/manual)", "persistent (error tone or has action - never auto-expires)"],
+        "a11y": ["LiveAnnouncer polite/assertive announcement", "dismiss button aria-label", "timers pause on hover/focus/document hidden per WCAG 2.2.1"],
+        "dependencies": ["utils/cn", "@angular/cdk/overlay", "@angular/cdk/a11y (LiveAnnouncer)"],
+        "testCoverage": "none found (only demo.ts + stories)",
+        "complexity": "very high",
+        "note": "Requires reimplementing: an overlay viewport positioned via CSS (no CDK), a visually-hidden aria-live region for announcements, and a pause/resume timer queue."
+      }
+    ]
   },
   "dependencies": {
-    "graphBuilt": false,
-    "migrationOrder": []
+    "graphBuilt": true,
+    "sharedUtilities": {
+      "cn": "projects/ui/src/lib/utils/cn.ts - clsx + tailwind-merge; native equivalent is a plain string-join/dedupe helper (no Tailwind class conflicts to resolve once utilities are replaced by BEM classes)"
+    },
+    "migrationOrder": [
+      "button",
+      "accordion",
+      "tabs",
+      "table",
+      "sidebar-nav",
+      "drawer",
+      "dialog",
+      "toast"
+    ],
+    "rationale": "No inter-component dependencies exist (each is independent, only sharing the `cn` utility and design tokens). Ordered simple -> complex: plain presentational components first, then the two Angular-CDK-powered overlay components last, since dialog/toast need patterns proven out by drawer's manual focus-trap/scroll-lock first."
   }
 }
+

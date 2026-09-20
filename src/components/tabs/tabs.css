@@ -1,0 +1,79 @@
+/**
+ * vf-tabs / button[vfTab] / vf-tab-panel
+ *
+ * Verified against: projects/ui/src/lib/tabs/tabs.variants.ts (Angular source, `master`
+ * branch, vf-dynamic-catalog-components).
+ */
+
+.vf-tabs {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  flex-direction: row;
+  border-color: var(--vf-color-border); /* border-ink-200 */
+  border-bottom-width: var(--vf-border-width-base); /* border-b-[1.5px] */
+  border-bottom-style: solid;
+}
+
+.vf-tabs--vertical {
+  flex-direction: column;
+  border-bottom-width: 0;
+  border-inline-end-width: var(--vf-border-width-base); /* border-e-[1.5px] (already logical/RTL-safe in source) */
+  border-inline-end-style: solid;
+}
+
+.vf-tabs__tab {
+  display: inline-flex;
+  height: 2.5rem; /* h-10 */
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--vf-space-xs); /* gap-1 */
+  padding-inline: var(--vf-space-sm); /* px-2 */
+  border-bottom: var(--vf-border-width-base) solid var(--vf-color-ink-200); /* border-b-[1.5px], unselected color */
+  border-start-start-radius: 0.5rem; /* rounded-t-lg - Tailwind default radius scale, not a Vodafone token */
+  border-start-end-radius: 0.5rem;
+  background: transparent;
+  color: var(--vf-color-ink-950);
+  font-size: var(--vf-font-size-base);
+  font-weight: var(--vf-font-weight-medium);
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 150ms ease, color 150ms ease; /* transition-[opacity,color], Tailwind default duration/easing */
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.vf-tabs__tab:hover:not(:disabled):not(.vf-tabs__tab--selected) {
+  opacity: 0.8;
+}
+
+.vf-tabs__tab:focus-visible {
+  outline-color: var(--vf-color-focus); /* focus-ring utility */
+}
+
+.vf-tabs__tab:disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.vf-tabs__tab--selected {
+  border-bottom-color: var(--vf-color-ink-950);
+  color: var(--vf-color-ink-950);
+  opacity: 1;
+}
+
+.vf-tabs__panel {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.vf-tabs__panel:focus-visible {
+  outline-color: var(--vf-color-focus);
+}
+
+.vf-tabs__panel[hidden] {
+  display: none;
+}

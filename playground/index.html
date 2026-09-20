@@ -10,7 +10,12 @@
       Current colors/values are temporary for playground functionality only
     -->
     <link rel="stylesheet" href="/tokens/theme.css" />
-    
+
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="/src/components/button/button.css" />
+    <link rel="stylesheet" href="/src/components/accordion/accordion.css" />
+    <link rel="stylesheet" href="/src/components/tabs/tabs.css" />
+
     <!-- Playground Styles -->
     <link rel="stylesheet" href="/playground/style.css" />
   </head>
@@ -101,25 +106,115 @@
           </div>
         </section>
 
-        <!-- Components will be added here as they are developed -->
-        
-        <!-- Example Component Section (Template) -->
-        <!--
+        <!-- Button Component -->
         <section class="playground-section">
-          <h2>Component Name</h2>
-          <p>Component description and usage notes.</p>
+          <h2>Button</h2>
+          <p>See <a href="/docs/components/button.md">docs/components/button.md</a> for the full API.</p>
 
           <div class="playground-example">
-            <h3>Variant: Primary</h3>
-            <!-- Component markup here -->
+            <h3>Variants</h3>
+            <button class="vf-button vf-button--primary vf-button--md" data-component="button" type="button">Primary</button>
+            <button class="vf-button vf-button--secondary vf-button--md" data-component="button" type="button">Secondary</button>
+            <button class="vf-button vf-button--outline vf-button--md" data-component="button" type="button">Outline</button>
+            <button class="vf-button vf-button--ghost vf-button--md" data-component="button" type="button">Ghost</button>
+            <button class="vf-button vf-button--danger vf-button--md" data-component="button" type="button">Danger</button>
           </div>
 
           <div class="playground-example">
-            <h3>Variant: Secondary</h3>
-            <!-- Component markup here -->
+            <h3>Sizes</h3>
+            <button class="vf-button vf-button--primary vf-button--sm" data-component="button" type="button">Small</button>
+            <button class="vf-button vf-button--primary vf-button--md" data-component="button" type="button">Medium</button>
+            <button class="vf-button vf-button--primary vf-button--lg" data-component="button" type="button">Large</button>
+          </div>
+
+          <div class="playground-example">
+            <h3>States</h3>
+            <button class="vf-button vf-button--primary vf-button--md" data-component="button" type="button" disabled>Disabled</button>
+            <button class="vf-button vf-button--primary vf-button--md" data-component="button" type="button" data-loading="true">Loading</button>
+            <button id="demo-toggle-button" class="vf-button vf-button--primary vf-button--md" data-component="button" type="button">Click me</button>
           </div>
         </section>
-        -->
+
+        <!-- Accordion Component -->
+        <section class="playground-section">
+          <h2>Accordion</h2>
+          <p>See <a href="/docs/components/accordion.md">docs/components/accordion.md</a> for the full API.</p>
+
+          <div class="playground-example">
+            <h3>Single-open group (default)</h3>
+            <div class="vf-accordion" data-component="accordion" data-multiple="false">
+              <div class="vf-accordion__item vf-accordion__item--expanded" data-value="shipping">
+                <button type="button" class="vf-accordion__trigger" id="demo-shipping-trigger" aria-expanded="true" aria-controls="demo-shipping-panel">
+                  <span class="vf-accordion__header">
+                    <span class="vf-accordion__title-row"><span class="vf-accordion__title">Shipping details</span></span>
+                    <span class="vf-accordion__description">Delivery times and carrier options</span>
+                  </span>
+                  <span class="vf-accordion__chevron">
+                    <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  </span>
+                </button>
+                <div class="vf-accordion__content">
+                  <div class="vf-accordion__content-inner">
+                    <div class="vf-accordion__divider"></div>
+                    <div class="vf-accordion__panel" id="demo-shipping-panel" role="region" aria-labelledby="demo-shipping-trigger">
+                      Orders ship within 2-3 business days.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="vf-accordion__item" data-value="returns">
+                <button type="button" class="vf-accordion__trigger" id="demo-returns-trigger" aria-expanded="false" aria-controls="demo-returns-panel">
+                  <span class="vf-accordion__header"><span class="vf-accordion__title-row"><span class="vf-accordion__title">Returns policy</span></span></span>
+                  <span class="vf-accordion__chevron">
+                    <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  </span>
+                </button>
+                <div class="vf-accordion__content">
+                  <div class="vf-accordion__content-inner">
+                    <div class="vf-accordion__divider"></div>
+                    <div class="vf-accordion__panel" id="demo-returns-panel" role="region" aria-labelledby="demo-returns-trigger">
+                      Items can be returned within 30 days.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="vf-accordion__item vf-accordion__item--disabled" data-value="warranty">
+                <button type="button" class="vf-accordion__trigger" id="demo-warranty-trigger" aria-expanded="false" aria-controls="demo-warranty-panel" aria-disabled="true" disabled>
+                  <span class="vf-accordion__header"><span class="vf-accordion__title-row"><span class="vf-accordion__title">Warranty (disabled)</span></span></span>
+                  <span class="vf-accordion__chevron">
+                    <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  </span>
+                </button>
+                <div class="vf-accordion__content">
+                  <div class="vf-accordion__content-inner">
+                    <div class="vf-accordion__divider"></div>
+                    <div class="vf-accordion__panel" id="demo-warranty-panel" role="region" aria-labelledby="demo-warranty-trigger">
+                      Not available for this product.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tabs Component -->
+        <section class="playground-section">
+          <h2>Tabs</h2>
+          <p>See <a href="/docs/components/tabs.md">docs/components/tabs.md</a> for the full API.</p>
+
+          <div class="playground-example">
+            <h3>Horizontal (default)</h3>
+            <div class="vf-tabs" data-component="tabs" role="tablist" aria-orientation="horizontal" aria-label="Account settings">
+              <button type="button" class="vf-tabs__tab vf-tabs__tab--selected" role="tab" id="demo-tab-profile" aria-controls="demo-panel-profile" aria-selected="true" tabindex="0" data-value="profile">Profile</button>
+              <button type="button" class="vf-tabs__tab" role="tab" id="demo-tab-billing" aria-controls="demo-panel-billing" aria-selected="false" tabindex="-1" data-value="billing">Billing</button>
+              <button type="button" class="vf-tabs__tab" role="tab" id="demo-tab-security" aria-controls="demo-panel-security" aria-selected="false" tabindex="-1" data-value="security" disabled>Security</button>
+            </div>
+            <div class="vf-tabs__panel" role="tabpanel" id="demo-panel-profile" aria-labelledby="demo-tab-profile" tabindex="0">Update your name, email, and photo.</div>
+            <div class="vf-tabs__panel" role="tabpanel" id="demo-panel-billing" aria-labelledby="demo-tab-billing" tabindex="0" hidden>Manage payment methods and invoices.</div>
+            <div class="vf-tabs__panel" role="tabpanel" id="demo-panel-security" aria-labelledby="demo-tab-security" tabindex="0" hidden>Security settings are unavailable for this account.</div>
+          </div>
+        </section>
 
       </div>
     </main>

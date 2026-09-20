@@ -8,9 +8,13 @@
 // Export utilities
 export * from './utils/index.js';
 
+// Components
+export { VfButton, initButtons } from './components/button/button.js';
+export { VfAccordion, VfAccordionItem, initAccordions } from './components/accordion/accordion.js';
+export { VfTabs, initTabs } from './components/tabs/tabs.js';
+
 // Components will be exported here as they are created
 // Example:
-// export { VfButton } from './components/button/button.js';
 // export { VfCard } from './components/card/card.js';
 // export { VfModal } from './components/modal/modal.js';
 

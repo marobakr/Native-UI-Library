@@ -1,0 +1,199 @@
+<!--
+  vf-accordion / vf-accordion-item
+  Source of truth: Angular `vf-accordion` + `vf-accordion-item` (projects/ui/src/lib/accordion/accordion.ts)
+
+  Structure per item (mirrors the Angular template 1:1 - trigger button + content wrapper):
+    .vf-accordion__item
+      .vf-accordion__trigger (button)
+        .vf-accordion__header
+          .vf-accordion__title-row > .vf-accordion__title (+ optional .vf-accordion__badge)
+          .vf-accordion__description (optional)
+        .vf-accordion__chevron (svg rotates 180deg when expanded)
+      .vf-accordion__content (grid-rows 0fr/1fr animated wrapper)
+        .vf-accordion__content-inner
+          .vf-accordion__divider (optional, only rendered when item has a divider)
+          .vf-accordion__panel (role="region", the actual body content)
+
+  Modifiers:
+    .vf-accordion__item--disabled  - mirrors `disabled` input (also set `disabled` on the trigger)
+    .vf-accordion__item--expanded  - mirrors the `expanded` computed signal; toggled by accordion.js
+
+  Group root: `data-component="accordion"` + `data-multiple="true|false"` (default false = single-open,
+  matches Angular's default `multiple = false`).
+
+  Standalone item (used outside a group, mirrors `<vf-accordion-item [(expanded)]>` used alone):
+  give the item `data-component="accordion-item"` instead of relying on a group wrapper.
+-->
+
+<!-- Group: single-open (default), 3 items -->
+<div class="vf-accordion" data-component="accordion" data-multiple="false">
+  <div class="vf-accordion__item vf-accordion__item--expanded" data-value="shipping">
+    <button
+      type="button"
+      class="vf-accordion__trigger"
+      id="vf-accordion-shipping-trigger"
+      aria-expanded="true"
+      aria-controls="vf-accordion-shipping-panel"
+    >
+      <span class="vf-accordion__header">
+        <span class="vf-accordion__title-row">
+          <span class="vf-accordion__title">Shipping details</span>
+          <span class="vf-accordion__badge">New</span>
+        </span>
+        <span class="vf-accordion__description">Delivery times and carrier options</span>
+      </span>
+      <span class="vf-accordion__chevron">
+        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false">
+          <path
+            d="M5 7.5l5 5 5-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+    </button>
+    <div class="vf-accordion__content">
+      <div class="vf-accordion__content-inner">
+        <div class="vf-accordion__divider"></div>
+        <div
+          class="vf-accordion__panel"
+          id="vf-accordion-shipping-panel"
+          role="region"
+          aria-labelledby="vf-accordion-shipping-trigger"
+        >
+          Orders ship within 2-3 business days. Express delivery is available at checkout.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vf-accordion__item" data-value="returns">
+    <button
+      type="button"
+      class="vf-accordion__trigger"
+      id="vf-accordion-returns-trigger"
+      aria-expanded="false"
+      aria-controls="vf-accordion-returns-panel"
+    >
+      <span class="vf-accordion__header">
+        <span class="vf-accordion__title-row">
+          <span class="vf-accordion__title">Returns policy</span>
+        </span>
+      </span>
+      <span class="vf-accordion__chevron">
+        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false">
+          <path
+            d="M5 7.5l5 5 5-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+    </button>
+    <div class="vf-accordion__content">
+      <div class="vf-accordion__content-inner">
+        <div class="vf-accordion__divider"></div>
+        <div
+          class="vf-accordion__panel"
+          id="vf-accordion-returns-panel"
+          role="region"
+          aria-labelledby="vf-accordion-returns-trigger"
+        >
+          Items can be returned within 30 days of delivery in their original condition.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disabled item -->
+  <div class="vf-accordion__item vf-accordion__item--disabled" data-value="warranty">
+    <button
+      type="button"
+      class="vf-accordion__trigger"
+      id="vf-accordion-warranty-trigger"
+      aria-expanded="false"
+      aria-controls="vf-accordion-warranty-panel"
+      aria-disabled="true"
+      disabled
+    >
+      <span class="vf-accordion__header">
+        <span class="vf-accordion__title-row">
+          <span class="vf-accordion__title">Warranty (unavailable for this product)</span>
+        </span>
+      </span>
+      <span class="vf-accordion__chevron">
+        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false">
+          <path
+            d="M5 7.5l5 5 5-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+    </button>
+    <div class="vf-accordion__content">
+      <div class="vf-accordion__content-inner">
+        <div class="vf-accordion__divider"></div>
+        <div
+          class="vf-accordion__panel"
+          id="vf-accordion-warranty-panel"
+          role="region"
+          aria-labelledby="vf-accordion-warranty-trigger"
+        >
+          Warranty information is not available for this product.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Standalone item (no group wrapper) -->
+<div class="vf-accordion__item" data-component="accordion-item" data-value="standalone">
+  <button
+    type="button"
+    class="vf-accordion__trigger"
+    id="vf-accordion-standalone-trigger"
+    aria-expanded="false"
+    aria-controls="vf-accordion-standalone-panel"
+  >
+    <span class="vf-accordion__header">
+      <span class="vf-accordion__title-row">
+        <span class="vf-accordion__title">Standalone item</span>
+      </span>
+    </span>
+    <span class="vf-accordion__chevron">
+      <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false">
+        <path
+          d="M5 7.5l5 5 5-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+  </button>
+  <div class="vf-accordion__content">
+    <div class="vf-accordion__content-inner">
+      <div class="vf-accordion__divider"></div>
+      <div
+        class="vf-accordion__panel"
+        id="vf-accordion-standalone-panel"
+        role="region"
+        aria-labelledby="vf-accordion-standalone-trigger"
+      >
+        Used outside a `vf-accordion` group - toggles independently, no exclusivity logic.
+      </div>
+    </div>
+  </div>
+</div>

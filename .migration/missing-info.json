@@ -1,5 +1,93 @@
 {
   "version": "1.0.0",
-  "updated": null,
-  "missingItems": []
+  "updated": "2026-09-20T16:50:00.000Z",
+  "missingItems": [
+    {
+      "phase": "component-migration",
+      "step": "create-tests (accordion, tabs)",
+      "item": "Ability to run `npm install` / `vitest` to execute accordion.test.js and tabs.test.js",
+      "searched": [
+        "Same environment constraint as button.test.js - node_modules/ absent, npm registry unreachable"
+      ],
+      "action": "Both test files written (accordion: item toggle/exclusivity/multiple-open/disabled/events; tabs: click select, keyboard nav, roving tabindex, auto-select-first, disabled skip, custom event) but unexecuted. Manually verified functionally instead via a live playground demo served with python -m http.server (see verification-log.json).",
+      "recommendation": "Run `npm install && npm test` in an environment with npm registry access to confirm all component test suites pass"
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (tabs)",
+      "item": "Tailwind's default border-radius scale value for `rounded-t-lg`",
+      "searched": [
+        "tokens/borders.css only defines Vodafone's semantic --vf-border-radius-sm/md/lg (mapped to theme.css's --radius-control/surface/overlay) - `rounded-t-lg` in tabs.variants.ts refers to Tailwind's OWN default radius scale, a different, undocumented-in-theme.css scale",
+        "attempted npm install to inspect the packaged default theme - registry.npmjs.org unreachable (same constraint as typography/spacing)"
+      ],
+      "action": "Used Tailwind's well-known, version-stable default `rounded-lg` value (0.5rem) as a literal in tabs.css, commented as a Tailwind default rather than a Vodafone token",
+      "recommendation": "Re-verify against an installed tailwindcss@4.1.12 once network access allows"
+    },
+    {
+      "phase": "component-migration",
+      "step": "create-tests (button)",
+      "item": "Ability to run `npm install` / `vitest` to execute button.test.js",
+      "searched": [
+        "node_modules/ does not exist in this workspace",
+        "`npm ping` against registry.npmjs.org timed out (confirmed unreachable, consistent with the earlier tailwindcss install attempt)"
+      ],
+      "action": "button.test.js was written to cover all VfButton public API (setVariant/setSize/setFullWidth/setDisabled/setLoading, initButtons, initial attribute sync) but could NOT be executed in this environment. Not marked as verified-passing - marked as written-but-unverified.",
+      "recommendation": "Run `npm install && npm test` in an environment with npm registry access to confirm button.test.js passes before treating the button component as fully verified"
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (button)",
+      "item": "Font size / font weight / line height / letter spacing scale",
+      "searched": [
+        "projects/ui/styles/theme.css - only defines --font-sans and --font-mono, no size/weight/line-height/letter-spacing overrides",
+        "no tailwind.config.js exists (Tailwind v4 CSS-only config); package.json pins tailwindcss ^4.1.12",
+        "attempted `npm install tailwindcss@4.1.12` in a scratch dir to inspect the packaged default theme directly - registry.npmjs.org is unreachable from this environment (only the internal Vodafone git host is reachable)"
+      ],
+      "action": "Populated tokens/typography.css with Tailwind v4's publicly documented, version-stable default scale (text-sm=0.875rem/1.25rem, font-medium=500, etc.), each value commented with its source utility class. NOT arbitrary invention, but NOT verified against an installed package either.",
+      "recommendation": "Re-verify these specific numbers against an installed tailwindcss@4.1.12 once network access allows, before relying on them for pixel-perfect visual regression"
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (button)",
+      "item": "Spacing scale and container widths",
+      "searched": [
+        "projects/ui/styles/theme.css - no --spacing or container tokens defined",
+        "component *.variants.ts files use Tailwind default spacing utilities directly (px-3, px-4, px-6, gap-2, etc.)",
+        "same tailwindcss@4.1.12 install attempt as above - registry unreachable"
+      ],
+      "action": "Populated tokens/spacing.css xs-xl scale using Tailwind's documented 0.25rem step unit (matches the existing playground token showcase's 8/16/24/32px labels). Container widths remain TBD - no evidence of a container scale in source at all.",
+      "recommendation": "Re-verify against installed tailwindcss@4.1.12 once network access allows"
+    },
+    {
+      "phase": "discovery",
+      "step": "extract-design-tokens",
+      "item": "--vf-shadow-md / --vf-shadow-xl and --vf-shadow-focus",
+      "searched": [
+        "projects/ui/styles/theme.css defines only --shadow-control and --shadow-overlay",
+        "focus treatment is the `focus-ring` utility (outline, not box-shadow)"
+      ],
+      "action": "Left unset in tokens/shadows.css - NOT invented",
+      "recommendation": "No source equivalent exists; confirm with design team whether these are needed at all"
+    },
+    {
+      "phase": "discovery",
+      "step": "extract-design-tokens",
+      "item": "--vf-z-index-dropdown / --vf-z-index-tooltip",
+      "searched": [
+        "drawer.ts (z-40 backdrop, z-50 panel) and table.variants.ts (z-10 sticky header) are the only explicit z-index usages found",
+        "no dropdown or tooltip component exists yet in the Angular source to confirm a value"
+      ],
+      "action": "Left unset in tokens/transitions.css - NOT invented",
+      "recommendation": "Confirm once a dropdown/tooltip component is added to the Angular source"
+    },
+    {
+      "phase": "discovery",
+      "step": "analyze-dependencies",
+      "item": "Dialog and Toast rely on Angular CDK (@angular/cdk/dialog, @angular/cdk/overlay, @angular/cdk/a11y LiveAnnouncer) for focus trap, scroll lock, positioning and live-region announcements",
+      "searched": ["dialog/dialog.ts, dialog/modal-surface.ts, toast/toast.ts"],
+      "action": "Recorded as an architectural note, not a missing value",
+      "recommendation": "These behaviours have no native equivalent and must be hand-implemented (drawer.ts already shows the manual pattern: focus trap via querySelectorAll + keydown handling, scroll lock via body.style.overflow, no CDK)"
+    }
+  ]
 }
+

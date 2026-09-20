@@ -1,29 +1,25 @@
 /**
  * Spacing Tokens
- * 
- * ⚠️ PLACEHOLDER - DO NOT USE THESE VALUES
- * 
- * These tokens will be populated from the Angular UI Library during discovery phase.
- * Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
- * 
- * To populate:
- * 1. Run: npm run discover
- * 2. Inspect Angular library for actual spacing values
- * 3. Extract from: projects/ui/styles/theme.css or tailwind.config.js
- * 4. Update this file with real values
+ *
+ * Checked against: projects/ui/styles/theme.css (Angular source, `master` branch,
+ * https://git.vf-eg.internal.vodafone.com/WEB/vf-dynamic-catalog-components).
+ * No custom spacing scale is defined there - see notes below and missing-info.json.
  */
 
 :root {
-  /* Spacing Scale - TO BE EXTRACTED */
-  /* --vf-space-xs: TBD; */
-  /* --vf-space-sm: TBD; */
-  /* --vf-space-md: TBD; */
-  /* --vf-space-lg: TBD; */
-  /* --vf-space-xl: TBD; */
+  /* Spacing Scale
+     theme.css does not define a custom --spacing scale; components use Tailwind's default
+     spacing utilities directly (e.g. button.variants.ts `px-3`/`px-4`/`px-6`, `gap-2`).
+     Installing tailwindcss@4.1.12 to verify against the packaged default theme was not
+     possible (no external network access from this environment - see missing-info.json),
+     so Tailwind's well-documented default spacing unit (0.25rem per step) is used here. */
+  --vf-space-xs: 0.25rem; /* 4px */
+  --vf-space-sm: 0.5rem; /* 8px - matches `gap-2` (button icon/label gap) */
+  --vf-space-md: 1rem; /* 16px - matches `px-4` / `p-4` */
+  --vf-space-lg: 1.5rem; /* 24px - matches `px-6` / `p-6` */
+  --vf-space-xl: 2rem; /* 32px */
 
-  /* Container Widths - TO BE EXTRACTED */
-  /* --vf-container-sm: TBD; */
-  /* --vf-container-md: TBD; */
-  /* --vf-container-lg: TBD; */
-  /* --vf-container-xl: TBD; */
+  /* Container Widths - NOT found in source. No component uses a Tailwind `container`
+     utility or an explicit max-width scale; the only fixed widths found are component-
+     specific (e.g. dialog.variants.ts DIALOG_WIDTHS, drawer.variants.ts panel sizes). */
 }

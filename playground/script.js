@@ -38,6 +38,16 @@ function initPlayground() {
       // document.documentElement.setAttribute('data-theme', 'dark');
     });
   }
+
+  // Button component demo - verifies native click still fires through VfButton enhancement
+  const demoButton = document.getElementById('demo-toggle-button');
+  if (demoButton) {
+    let clicks = 0;
+    demoButton.addEventListener('click', () => {
+      clicks += 1;
+      demoButton.textContent = `Clicked ${clicks}x`;
+    });
+  }
 }
 
 /**
