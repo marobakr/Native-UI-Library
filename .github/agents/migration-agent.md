@@ -166,11 +166,12 @@ When you receive a migration command:
 **Your Tasks:**
 1. Select next component (dependencies first)
 2. Analyze Angular component thoroughly
-3. Implement native version (HTML-first)
-4. Create tests
-5. Create documentation
-6. Verify against Angular source
-7. Mark complete, move to next
+3. **Extract inline SVG icons from Angular stories/demos**
+4. Implement native version (HTML-first)
+5. Create tests
+6. Create documentation
+7. Verify against Angular source
+8. Mark complete, move to next
 
 **Critical Rules:**
 - ✅ HTML structure is explicit (not JS-generated)
@@ -179,8 +180,22 @@ When you receive a migration command:
 - ✅ Match visual appearance
 - ✅ Maintain accessibility
 - ✅ Support RTL and responsive
+- ✅ **Extract real icons from Angular (search stories for inline SVG)**
+- ❌ Do NOT use placeholder icons if real ones exist in Angular
 - ❌ Do NOT add features not in Angular version
 - ❌ Do NOT simplify or "improve" the design
+
+**Icon Extraction Rules:**
+1. **Search Angular stories for inline SVG:**
+   ```bash
+   grep -r "<svg" [component].stories.ts
+   ```
+2. **Copy exact SVG markup** (viewBox, paths, attributes)
+3. **Add source comment:** `<!-- From Angular: icons/[name] glyph -->`
+4. **Only use placeholders if:**
+   - No inline SVG found in stories
+   - No SVG in component templates
+   - Icon comes from external system (Figma, CDN)
 
 ### Phase 3: Validation
 

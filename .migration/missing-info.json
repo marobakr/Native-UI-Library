@@ -1,7 +1,20 @@
 {
   "version": "1.0.0",
-  "updated": "2026-09-20T16:50:00.000Z",
+  "updated": "2026-09-20T17:00:00.000Z",
   "missingItems": [
+    {
+      "phase": "component-migration",
+      "step": "implement-native (accordion, button)",
+      "item": "Inline SVG icons from Angular stories",
+      "status": "FIXED",
+      "searched": [
+        "projects/ui/src/lib/accordion/accordion.stories.ts - found chevron icon inline SVG (lines 11-16)",
+        "projects/ui/src/lib/table/table.ts - found sort arrow icon inline SVG (line 190-192)"
+      ],
+      "action": "FIXED: Extracted real chevron icon from Angular stories and replaced placeholder in accordion.html. Added icon extraction rules to agent workflow.",
+      "resolution": "Icons now 100% match Angular. Updated workflow to always search Angular stories for inline SVG before using placeholders.",
+      "updated": "2026-09-20T17:00:00.000Z"
+    },
     {
       "phase": "component-migration",
       "step": "create-tests (accordion, tabs)",

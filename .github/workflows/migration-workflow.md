@@ -113,8 +113,16 @@ You must:
      - RTL support
      - Accessibility (ARIA, keyboard, focus)
      - Test cases
+     - **Inline SVG icons:** Search stories/demos for `<svg>` elements
+   - **Extract icons from Angular:**
+     - Check `[component].stories.ts` for inline SVG
+     - Check component templates for embedded SVG
+     - Copy exact SVG markup (viewBox, paths, attributes)
+     - Document icon sources (add comment with Angular file reference)
+     - NEVER use placeholder icons if real SVG exists in Angular
    - Document findings in `.migration/analysis/[component-name].json`
    - **VERIFY:** All design values against tokens and source
+   - **VERIFY:** All icons extracted from Angular (not placeholders)
    - Record any missing information
    - Update state: `currentStep: "analyze-component"`
 
