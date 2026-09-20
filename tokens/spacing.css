@@ -1,0 +1,29 @@
+/**
+ * Spacing Tokens
+ * 
+ * ⚠️ PLACEHOLDER - DO NOT USE THESE VALUES
+ * 
+ * These tokens will be populated from the Angular UI Library during discovery phase.
+ * Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+ * 
+ * To populate:
+ * 1. Run: npm run discover
+ * 2. Inspect Angular library for actual spacing values
+ * 3. Extract from: projects/ui/styles/theme.css or tailwind.config.js
+ * 4. Update this file with real values
+ */
+
+:root {
+  /* Spacing Scale - TO BE EXTRACTED */
+  /* --vf-space-xs: TBD; */
+  /* --vf-space-sm: TBD; */
+  /* --vf-space-md: TBD; */
+  /* --vf-space-lg: TBD; */
+  /* --vf-space-xl: TBD; */
+
+  /* Container Widths - TO BE EXTRACTED */
+  /* --vf-container-sm: TBD; */
+  /* --vf-container-md: TBD; */
+  /* --vf-container-lg: TBD; */
+  /* --vf-container-xl: TBD; */
+}

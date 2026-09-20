@@ -1,0 +1,9 @@
+# Documentation Directory
+
+Component analysis documents will be created here by GitHub Copilot:
+
+docs/
+└── component-analysis/
+    ├── button.md
+    ├── card.md
+    └── ...

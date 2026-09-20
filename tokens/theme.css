@@ -1,0 +1,36 @@
+/**
+ * Vodafone Native UI Library - Design Tokens
+ * 
+ * These CSS custom properties define the design system values
+ * used by all components. Update these to customize the theme.
+ */
+
+@import './colors.css';
+@import './typography.css';
+@import './spacing.css';
+@import './borders.css';
+@import './shadows.css';
+@import './transitions.css';
+
+:root {
+  /* Base font size for rem calculations */
+  font-size: 16px;
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Override tokens for dark mode */
+    /* Example:
+    --vf-color-surface: #1a1a1a;
+    --vf-color-text-primary: #ffffff;
+    */
+  }
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+  :root {
+    /* Increase contrast for accessibility */
+  }
+}

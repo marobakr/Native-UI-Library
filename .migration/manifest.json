@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "created": null,
+  "updated": null,
+  "angularSource": {
+    "repository": "https://github.com/Mohamed-Adel-Web/vf-UI-components.git",
+    "clonedTo": ".temp/angular-ui-library/",
+    "discovered": false
+  },
+  "designSystem": {
+    "tokensExtracted": false,
+    "tokenFiles": [],
+    "totalTokens": 0,
+    "extractedTokens": 0
+  },
+  "components": {
+    "discovered": false,
+    "totalComponents": 0,
+    "completedComponents": 0,
+    "inProgressComponent": null,
+    "list": []
+  },
+  "dependencies": {
+    "graphBuilt": false,
+    "migrationOrder": []
+  }
+}

@@ -1,0 +1,44 @@
+/**
+ * Color Tokens
+ * 
+ * ⚠️ PLACEHOLDER - DO NOT USE THESE VALUES
+ * 
+ * These tokens will be populated from the Angular UI Library during discovery phase.
+ * Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+ * 
+ * To populate:
+ * 1. Run: npm run discover
+ * 2. Inspect Angular library for actual color values
+ * 3. Extract from: projects/ui/styles/theme.css or tailwind.config.js
+ * 4. Update this file with real values
+ */
+
+:root {
+  /* Brand Colors - TO BE EXTRACTED */
+  /* --vf-color-primary: TBD; */
+  /* --vf-color-primary-hover: TBD; */
+  /* --vf-color-secondary: TBD; */
+  
+  /* Text Colors - TO BE EXTRACTED */
+  /* --vf-color-text-primary: TBD; */
+  /* --vf-color-text-secondary: TBD; */
+  
+  /* Surface Colors - TO BE EXTRACTED */
+  /* --vf-color-surface: TBD; */
+  /* --vf-color-surface-secondary: TBD; */
+  
+  /* Semantic Colors - TO BE EXTRACTED */
+  /* --vf-color-success: TBD; */
+  /* --vf-color-warning: TBD; */
+  /* --vf-color-error: TBD; */
+  /* --vf-color-info: TBD; */
+  
+  /* Border Colors - TO BE EXTRACTED */
+  /* --vf-color-border: TBD; */
+  
+  /* Focus Colors - TO BE EXTRACTED */
+  /* --vf-color-focus: TBD; */
+  
+  /* Overlay/Backdrop - TO BE EXTRACTED */
+  /* --vf-color-overlay: TBD; */
+}

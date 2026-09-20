@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vodafone Native UI Library - Playground</title>
+    
+    <!-- 
+      Design Tokens are placeholders until populated from Angular library
+      Current colors/values are temporary for playground functionality only
+    -->
+    <link rel="stylesheet" href="/tokens/theme.css" />
+    
+    <!-- Playground Styles -->
+    <link rel="stylesheet" href="/playground/style.css" />
+  </head>
+  <body>
+    <header class="playground-header">
+      <div class="playground-container">
+        <div class="playground-brand">
+          <h1>Vodafone Native UI Library</h1>
+          <p>Framework-independent web components</p>
+        </div>
+        <div class="playground-controls">
+          <button id="toggle-direction" class="playground-btn" type="button">
+            Switch to RTL
+          </button>
+          <button id="toggle-theme" class="playground-btn" type="button">
+            Dark Mode
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="playground-main">
+      <div class="playground-container">
+        <!-- Welcome Section -->
+        <section class="playground-section">
+          <h2>Welcome to the Playground</h2>
+          <p>
+            This playground is a development environment for testing and showcasing components.
+            Components will appear below as they are developed.
+          </p>
+          <div class="playground-notice">
+            <strong>Status:</strong> Initialization Complete - Ready for Component Development
+          </div>
+        </section>
+
+        <!-- Design Tokens Section -->
+        <section class="playground-section">
+          <h2>Design Tokens</h2>
+          <p>
+            All components use CSS custom properties (design tokens) for consistent styling.
+            These can be overridden for theming.
+          </p>
+
+          <div class="token-showcase">
+            <div class="token-group">
+              <h3>Colors</h3>
+              <div class="token-grid">
+                <div class="token-item">
+                  <div class="token-swatch" style="background: var(--vf-color-primary)"></div>
+                  <span>Primary</span>
+                </div>
+                <div class="token-item">
+                  <div class="token-swatch" style="background: var(--vf-color-secondary)"></div>
+                  <span>Secondary</span>
+                </div>
+                <div class="token-item">
+                  <div class="token-swatch" style="background: var(--vf-color-success)"></div>
+                  <span>Success</span>
+                </div>
+                <div class="token-item">
+                  <div class="token-swatch" style="background: var(--vf-color-error)"></div>
+                  <span>Error</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="token-group">
+              <h3>Spacing</h3>
+              <div class="token-grid">
+                <div class="token-item">
+                  <div class="token-space" style="width: var(--vf-space-sm)"></div>
+                  <span>Small (8px)</span>
+                </div>
+                <div class="token-item">
+                  <div class="token-space" style="width: var(--vf-space-md)"></div>
+                  <span>Medium (16px)</span>
+                </div>
+                <div class="token-item">
+                  <div class="token-space" style="width: var(--vf-space-lg)"></div>
+                  <span>Large (24px)</span>
+                </div>
+                <div class="token-item">
+                  <div class="token-space" style="width: var(--vf-space-xl)"></div>
+                  <span>XL (32px)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Components will be added here as they are developed -->
+        
+        <!-- Example Component Section (Template) -->
+        <!--
+        <section class="playground-section">
+          <h2>Component Name</h2>
+          <p>Component description and usage notes.</p>
+
+          <div class="playground-example">
+            <h3>Variant: Primary</h3>
+            <!-- Component markup here -->
+          </div>
+
+          <div class="playground-example">
+            <h3>Variant: Secondary</h3>
+            <!-- Component markup here -->
+          </div>
+        </section>
+        -->
+
+      </div>
+    </main>
+
+    <footer class="playground-footer">
+      <div class="playground-container">
+        <p>&copy; 2026 Vodafone Egypt. All rights reserved.</p>
+        <p>
+          <a href="https://github.com/vodafone-egypt/native-ui-library" target="_blank">
+            GitHub Repository
+          </a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Playground Scripts -->
+    <script type="module" src="/playground/script.js"></script>
+  </body>
+</html>

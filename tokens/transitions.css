@@ -1,0 +1,31 @@
+/**
+ * Transition & Animation Tokens
+ * 
+ * ⚠️ PLACEHOLDER - DO NOT USE THESE VALUES
+ * 
+ * These tokens will be populated from the Angular UI Library during discovery phase.
+ * Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+ * 
+ * To populate:
+ * 1. Run: npm run discover
+ * 2. Inspect Angular library for actual animation values
+ * 3. Extract from: projects/ui/styles/theme.css or tailwind.config.js
+ * 4. Update this file with real values
+ */
+
+:root {
+  /* Durations - TO BE EXTRACTED */
+  /* --vf-transition-duration-fast: TBD; */
+  /* --vf-transition-duration-base: TBD; */
+  /* --vf-transition-duration-slow: TBD; */
+
+  /* Easing Functions - TO BE EXTRACTED */
+  /* --vf-transition-easing-linear: TBD; */
+  /* --vf-transition-easing-ease: TBD; */
+  /* --vf-transition-easing-smooth: TBD; */
+
+  /* Z-index Layers - TO BE EXTRACTED */
+  /* --vf-z-index-dropdown: TBD; */
+  /* --vf-z-index-modal: TBD; */
+  /* --vf-z-index-tooltip: TBD; */
+}

@@ -1,0 +1,91 @@
+{
+  "name": "@vodafone/native-ui-library",
+  "version": "0.1.0",
+  "description": "Framework-independent native UI component library for Vodafone Egypt",
+  "type": "module",
+  "main": "dist/vodafone-ui.umd.js",
+  "module": "dist/vodafone-ui.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vodafone-ui.es.js",
+      "require": "./dist/vodafone-ui.umd.js"
+    },
+    "./tokens": "./tokens/theme.css",
+    "./components/*": "./dist/components/*"
+  },
+  "files": [
+    "dist",
+    "tokens",
+    "src"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "lint": "eslint src --ext .js",
+    "lint:fix": "eslint src --ext .js --fix",
+    "format": "prettier --write \"src/**/*.{js,css,html,md}\"",
+    "format:check": "prettier --check \"src/**/*.{js,css,html,md}\"",
+    "playground": "vite --config vite.playground.config.js",
+    "discover": "node scripts/discover-components.js discover",
+    "discover:update": "node scripts/discover-components.js update",
+    "status": "node scripts/discover-components.js status",
+    "components:list": "node scripts/discover-components.js list",
+    "tokens:extract": "node scripts/extract-tokens.js",
+    "migrate": "node scripts/migrate.js",
+    "migrate:start": "node scripts/migrate.js start",
+    "migrate:resume": "node scripts/migrate.js resume",
+    "migrate:status": "node scripts/migrate.js status",
+    "migrate:reset": "node scripts/migrate.js reset"
+  },
+  "keywords": [
+    "vodafone",
+    "ui",
+    "components",
+    "native",
+    "web-components",
+    "liferay",
+    "accessibility",
+    "a11y",
+    "rtl",
+    "design-system"
+  ],
+  "author": "Vodafone Egypt",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vodafone-egypt/native-ui-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vodafone-egypt/native-ui-library/issues"
+  },
+  "homepage": "https://github.com/vodafone-egypt/native-ui-library#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^1.0.0",
+    "@vitest/ui": "^1.0.0",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "happy-dom": "^12.10.3",
+    "prettier": "^3.1.1",
+    "vite": "^5.0.8",
+    "vitest": "^1.0.4"
+  },
+  "browserslist": [
+    "Chrome >= 90",
+    "Firefox >= 88",
+    "Safari >= 14",
+    "Edge >= 90",
+    "iOS >= 14",
+    "ChromeAndroid >= 90"
+  ]
+}

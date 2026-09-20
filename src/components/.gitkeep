@@ -1,0 +1,10 @@
+# Components directory
+# Individual components will be added here
+
+# Each component follows this structure:
+# component-name/
+# ├── component-name.html
+# ├── component-name.css
+# ├── component-name.js
+# ├── component-name.test.js
+# └── README.md

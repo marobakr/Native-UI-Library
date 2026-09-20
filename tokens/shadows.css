@@ -1,0 +1,26 @@
+/**
+ * Shadow Tokens
+ * 
+ * ⚠️ PLACEHOLDER - DO NOT USE THESE VALUES
+ * 
+ * These tokens will be populated from the Angular UI Library during discovery phase.
+ * Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+ * 
+ * To populate:
+ * 1. Run: npm run discover
+ * 2. Inspect Angular library for actual shadow values
+ * 3. Extract from: projects/ui/styles/theme.css or tailwind.config.js
+ * 4. Update this file with real values
+ */
+
+:root {
+  /* Box Shadows - TO BE EXTRACTED */
+  /* --vf-shadow-none: TBD; */
+  /* --vf-shadow-sm: TBD; */
+  /* --vf-shadow-md: TBD; */
+  /* --vf-shadow-lg: TBD; */
+  /* --vf-shadow-xl: TBD; */
+
+  /* Focus Shadows - TO BE EXTRACTED */
+  /* --vf-shadow-focus: TBD; */
+}

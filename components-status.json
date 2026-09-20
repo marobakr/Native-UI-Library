@@ -1,0 +1,107 @@
+{
+  "lastUpdated": "2026-09-20T09:42:52.205Z",
+  "repository": "https://github.com/Mohamed-Adel-Web/vf-UI-components.git",
+  "totalComponents": 10,
+  "components": [
+    {
+      "name": "accordion",
+      "path": "projects/ui/src/lib/accordion",
+      "url": "https://github.com/Mohamed-Adel-Web/vf-UI-components/tree/master/projects/ui/src/lib/accordion",
+      "status": "not-started",
+      "priority": "medium",
+      "complexity": "unknown",
+      "createdAt": "2026-09-20T09:42:52.204Z",
+      "updatedAt": "2026-09-20T09:42:52.205Z"
+    },
+    {
+      "name": "button",
+      "path": "projects/ui/src/lib/button",
+      "url": "https://github.com/Mohamed-Adel-Web/vf-UI-components/tree/master/projects/ui/src/lib/button",
+      "status": "not-started",
+      "priority": "medium",
+      "complexity": "unknown",
+      "createdAt": "2026-09-20T09:42:52.205Z",
+      "updatedAt": "2026-09-20T09:42:52.205Z"
+    },
+    {
+      "name": "dialog",
+      "path": "projects/ui/src/lib/dialog",
+      "url": "https://github.com/Mohamed-Adel-Web/vf-UI-components/tree/master/projects/ui/src/lib/dialog",
+      "status": "not-started",
+      "priority": "medium",
+      "complexity": "unknown",
+      "createdAt": "2026-09-20T09:42:52.205Z",
+      "updatedAt": "2026-09-20T09:42:52.205Z"
+    },
+    {
+      "name": "drawer",
+      "path": "projects/ui/src/lib/drawer",
+      "url": "https://github.com/Mohamed-Adel-Web/vf-UI-components/tree/master/projects/ui/src/lib/drawer",
+      "status": "not-started",
+      "priority": "medium",
+      "complexity": "unknown",
+      "createdAt": "2026-09-20T09:42:52.205Z",
+      "updatedAt": "2026-09-20T09:42:52.205Z"
+    },
+    {
+      "name": "foundations",
+      "path": "projects/ui/src/lib/foundations",
+      "url": "https://github.com/Mohamed-Adel-Web/vf-UI-components/tree/master/projects/ui/src/lib/foundations",
+      "status": "not-started",
+      "priority": "medium",
+      "complexity": "unknown",
+      "createdAt": "2026-09-20T09:42:52.205Z",
+      "updatedAt": "2026-09-20T09:42:52.205Z"
+    },
+    {
+      "name": "sidebar-nav",
+      "path": "projects/ui/src/lib/sidebar-nav",
+      "url": "https://github.com/Mohamed-Adel-Web/vf-UI-components/tree/master/projects/ui/src/lib/sidebar-nav",
+      "status": "not-started",
+      "priority": "medium",
+      "complexity": "unknown",
+      "createdAt": "2026-09-20T09:42:52.205Z",
+      "updatedAt": "2026-09-20T09:42:52.205Z"
+    },
+    {
+      "name": "table",
+      "path": "projects/ui/src/lib/table",
+      "url": "https://github.com/Mohamed-Adel-Web/vf-UI-components/tree/master/projects/ui/src/lib/table",
+      "status": "not-started",
+      "priority": "medium",
+      "complexity": "unknown",
+      "createdAt": "2026-09-20T09:42:52.205Z",
+      "updatedAt": "2026-09-20T09:42:52.205Z"
+    },
+    {
+      "name": "tabs",
+      "path": "projects/ui/src/lib/tabs",
+      "url": "https://github.com/Mohamed-Adel-Web/vf-UI-components/tree/master/projects/ui/src/lib/tabs",
+      "status": "not-started",
+      "priority": "medium",
+      "complexity": "unknown",
+      "createdAt": "2026-09-20T09:42:52.205Z",
+      "updatedAt": "2026-09-20T09:42:52.205Z"
+    },
+    {
+      "name": "toast",
+      "path": "projects/ui/src/lib/toast",
+      "url": "https://github.com/Mohamed-Adel-Web/vf-UI-components/tree/master/projects/ui/src/lib/toast",
+      "status": "not-started",
+      "priority": "medium",
+      "complexity": "unknown",
+      "createdAt": "2026-09-20T09:42:52.205Z",
+      "updatedAt": "2026-09-20T09:42:52.205Z"
+    },
+    {
+      "name": "utils",
+      "path": "projects/ui/src/lib/utils",
+      "url": "https://github.com/Mohamed-Adel-Web/vf-UI-components/tree/master/projects/ui/src/lib/utils",
+      "status": "not-started",
+      "priority": "medium",
+      "complexity": "unknown",
+      "createdAt": "2026-09-20T09:42:52.205Z",
+      "updatedAt": "2026-09-20T09:42:52.205Z"
+    }
+  ]
+}

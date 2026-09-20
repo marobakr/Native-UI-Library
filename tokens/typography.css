@@ -1,0 +1,42 @@
+/**
+ * Typography Tokens
+ * 
+ * ⚠️ PLACEHOLDER - DO NOT USE THESE VALUES
+ * 
+ * These tokens will be populated from the Angular UI Library during discovery phase.
+ * Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+ * 
+ * To populate:
+ * 1. Run: npm run discover
+ * 2. Inspect Angular library for actual typography values
+ * 3. Extract from: projects/ui/styles/theme.css or tailwind.config.js
+ * 4. Update this file with real values
+ */
+
+:root {
+  /* Font Families - TO BE EXTRACTED */
+  /* --vf-font-family-base: TBD; */
+  /* --vf-font-family-monospace: TBD; */
+
+  /* Font Sizes - TO BE EXTRACTED */
+  /* --vf-font-size-xs: TBD; */
+  /* --vf-font-size-sm: TBD; */
+  /* --vf-font-size-base: TBD; */
+  /* --vf-font-size-lg: TBD; */
+  /* --vf-font-size-xl: TBD; */
+
+  /* Font Weights - TO BE EXTRACTED */
+  /* --vf-font-weight-normal: TBD; */
+  /* --vf-font-weight-medium: TBD; */
+  /* --vf-font-weight-bold: TBD; */
+
+  /* Line Heights - TO BE EXTRACTED */
+  /* --vf-line-height-tight: TBD; */
+  /* --vf-line-height-base: TBD; */
+  /* --vf-line-height-relaxed: TBD; */
+
+  /* Letter Spacing - TO BE EXTRACTED */
+  /* --vf-letter-spacing-tight: TBD; */
+  /* --vf-letter-spacing-normal: TBD; */
+  /* --vf-letter-spacing-wide: TBD; */
+}

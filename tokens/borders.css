@@ -1,0 +1,27 @@
+/**
+ * Border Tokens
+ * 
+ * ⚠️ PLACEHOLDER - DO NOT USE THESE VALUES
+ * 
+ * These tokens will be populated from the Angular UI Library during discovery phase.
+ * Source: https://github.com/Mohamed-Adel-Web/vf-UI-components.git
+ * 
+ * To populate:
+ * 1. Run: npm run discover
+ * 2. Inspect Angular library for actual border values
+ * 3. Extract from: projects/ui/styles/theme.css or tailwind.config.js
+ * 4. Update this file with real values
+ */
+
+:root {
+  /* Border Widths - TO BE EXTRACTED */
+  /* --vf-border-width-thin: TBD; */
+  /* --vf-border-width-base: TBD; */
+  /* --vf-border-width-thick: TBD; */
+
+  /* Border Radius - TO BE EXTRACTED */
+  /* --vf-border-radius-sm: TBD; */
+  /* --vf-border-radius-md: TBD; */
+  /* --vf-border-radius-lg: TBD; */
+  /* --vf-border-radius-full: TBD; */
+}

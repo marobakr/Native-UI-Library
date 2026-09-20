@@ -1,0 +1,11 @@
+# Migration temporary files
+analysis/
+*.tmp
+*.log
+
+# Keep state files
+!state.json
+!manifest.json
+!missing-info.json
+!verification-log.json
+!checkpoints.json
