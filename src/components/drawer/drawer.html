@@ -1,0 +1,48 @@
+<!--
+  vf-drawer demo markup.
+  Verified against: projects/ui/src/lib/drawer/drawer.ts + drawer.stories.ts (Angular
+  source, `master` branch, vf-dynamic-catalog-components).
+
+  Only `.vf-drawer`, `.vf-drawer__backdrop`, `.vf-drawer__panel` (+ side/size modifiers)
+  and `.vf-drawer__body` come from the Angular component itself - Angular's
+  `vfDrawerHeader`/`vfDrawerFooter` slots ship with ZERO built-in styling (the consumer
+  supplies a `class` attribute directly in their own template). `.vf-drawer__header`,
+  `.vf-drawer__footer`, `.vf-drawer__close`, `.vf-drawer__title`, `.vf-drawer__description`
+  below are demo-only helper classes reproducing the story's own inline classes, not part
+  of the portable component API (documented in drawer.md).
+-->
+
+<link rel="stylesheet" href="/tokens/theme.css" />
+<link rel="stylesheet" href="/src/components/button/button.css" />
+<link rel="stylesheet" href="/src/components/drawer/drawer.css" />
+
+<button type="button" class="vf-button vf-button--primary vf-button--md" data-drawer-open="demo-drawer">Open drawer</button>
+
+<div class="vf-drawer" data-component="drawer" id="demo-drawer" data-side="end" data-size="md" inert>
+  <div class="vf-drawer__backdrop" data-drawer-backdrop></div>
+  <div
+    class="vf-drawer__panel vf-drawer__panel--end vf-drawer__panel--md"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="demo-drawer-title"
+    tabindex="-1"
+    data-drawer-panel
+  >
+    <header class="vf-drawer__header">
+      <div class="vf-drawer__header-text">
+        <h2 class="vf-drawer__title" id="demo-drawer-title">Customise dashboard</h2>
+        <p class="vf-drawer__description">Set up your dashboard by reordering widgets.</p>
+      </div>
+      <button type="button" class="vf-drawer__close" data-drawer-close aria-label="Close">&#x2715;</button>
+    </header>
+
+    <div class="vf-drawer__body">
+      <p>Drawer body content is projected here via the default slot.</p>
+    </div>
+
+    <footer class="vf-drawer__footer">
+      <button type="button" class="vf-button vf-button--ghost vf-button--md" data-drawer-close>Cancel</button>
+      <button type="button" class="vf-button vf-button--primary vf-button--md" data-drawer-close>Apply</button>
+    </footer>
+  </div>
+</div>

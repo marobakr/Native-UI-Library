@@ -4,16 +4,16 @@
   "missingItems": [
     {
       "phase": "component-migration",
-      "step": "implement-native (accordion, button)",
+      "step": "implement-native (accordion)",
       "item": "Inline SVG icons from Angular stories",
       "status": "FIXED",
       "searched": [
         "projects/ui/src/lib/accordion/accordion.stories.ts - found chevron icon inline SVG (lines 11-16)",
-        "projects/ui/src/lib/table/table.ts - found sort arrow icon inline SVG (line 190-192)"
+        "projects/ui/src/lib/table/table.ts - found sort arrow icon inline SVG (line 190-192, to be used when table is implemented)"
       ],
-      "action": "FIXED: Extracted real chevron icon from Angular stories and replaced placeholder in accordion.html. Added icon extraction rules to agent workflow.",
-      "resolution": "Icons now 100% match Angular. Updated workflow to always search Angular stories for inline SVG before using placeholders.",
-      "updated": "2026-09-20T17:00:00.000Z"
+      "action": "FIXED: Extracted real chevron icon from Angular stories and replaced the placeholder in all 4 accordion.html instances (3 group items + the standalone item, which had been missed in the first pass). button.html's icon-only examples intentionally keep a generic placeholder - Angular's button directive has no built-in icon (pure content projection via <ng-content/>), so there is no canonical icon to extract for it.",
+      "resolution": "Accordion icons now 100% match Angular across all instances. Workflow rule added: always search Angular stories for inline SVG before using placeholders, but only apply where Angular source actually defines an icon.",
+      "updated": "2026-09-20T17:30:00.000Z"
     },
     {
       "phase": "component-migration",

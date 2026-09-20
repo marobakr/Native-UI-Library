@@ -19,7 +19,7 @@
   "components": {
     "discovered": true,
     "totalComponents": 8,
-    "completedComponents": 2,
+    "completedComponents": 6,
     "inProgressComponent": null,
     "list": [
       {
@@ -84,7 +84,19 @@
         "a11y": ["role=tablist/tab/tabpanel", "roving tabindex", "Arrow/Home/End keyboard navigation", "aria-selected/aria-controls/aria-labelledby"],
         "dependencies": ["utils/cn"],
         "testCoverage": "tabs.spec.ts exists",
-        "complexity": "medium"
+        "complexity": "medium",
+        "nativeImplementation": {
+          "status": "complete",
+          "files": [
+            "src/components/tabs/tabs.html",
+            "src/components/tabs/tabs.css",
+            "src/components/tabs/tabs.js",
+            "src/components/tabs/tabs.test.js",
+            "docs/components/tabs.md",
+            ".migration/analysis/tabs.json"
+          ],
+          "caveat": "tabs.test.js written but not executed - no node_modules/npm registry access in this environment"
+        }
       },
       {
         "name": "table",
@@ -97,7 +109,19 @@
         "a11y": ["aria-sort", "aria-selected", "th scope", "checkbox aria-label", "keyboard sortable header (Enter/Space)"],
         "dependencies": ["utils/cn"],
         "testCoverage": "table.spec.ts exists",
-        "complexity": "high"
+        "complexity": "high",
+        "nativeImplementation": {
+          "status": "complete",
+          "files": [
+            "src/components/table/table.html",
+            "src/components/table/table.css",
+            "src/components/table/table.js",
+            "src/components/table/table.test.js",
+            "docs/components/table.md",
+            ".migration/analysis/table.json"
+          ],
+          "caveat": "table.test.js written but not executed - no node_modules/npm registry access in this environment"
+        }
       },
       {
         "name": "sidebar-nav",
@@ -111,7 +135,19 @@
         "responsive": "width transition only (sidebar-nav-transition)",
         "dependencies": ["utils/cn"],
         "testCoverage": "sidebar-nav.spec.ts exists",
-        "complexity": "medium"
+        "complexity": "medium",
+        "nativeImplementation": {
+          "status": "complete",
+          "files": [
+            "src/components/sidebar-nav/sidebar-nav.html",
+            "src/components/sidebar-nav/sidebar-nav.css",
+            "src/components/sidebar-nav/sidebar-nav.js",
+            "src/components/sidebar-nav/sidebar-nav.test.js",
+            "docs/components/sidebar-nav.md",
+            ".migration/analysis/sidebar-nav.json"
+          ],
+          "caveat": "sidebar-nav.test.js written but not executed - no node_modules/npm registry access in this environment"
+        }
       },
       {
         "name": "drawer",
@@ -126,7 +162,19 @@
         "dependencies": ["utils/cn"],
         "testCoverage": "drawer.spec.ts exists",
         "complexity": "high",
-        "note": "Self-contained: implements its own focus trap/scroll lock manually (no Angular CDK). Good reference pattern for dialog's native reimplementation."
+        "note": "Self-contained: implements its own focus trap/scroll lock manually (no Angular CDK). Good reference pattern for dialog's native reimplementation.",
+        "nativeImplementation": {
+          "status": "complete",
+          "files": [
+            "src/components/drawer/drawer.html",
+            "src/components/drawer/drawer.css",
+            "src/components/drawer/drawer.js",
+            "src/components/drawer/drawer.test.js",
+            "docs/components/drawer.md",
+            ".migration/analysis/drawer.json"
+          ],
+          "caveat": "drawer.test.js written but not executed - no node_modules/npm registry access in this environment"
+        }
       },
       {
         "name": "dialog",

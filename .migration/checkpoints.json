@@ -26,6 +26,42 @@
       "missingInfoCount": 6,
       "caveat": "accordion.test.js could not be executed - no node_modules and npm registry unreachable in this environment. Tests are written but unverified.",
       "canResume": true
+    },
+    {
+      "name": "component-tabs-complete",
+      "timestamp": "2026-09-20T17:30:00.000Z",
+      "phase": "component-migration",
+      "summary": "Ported `vf-tabs`/`vfTab`/`vf-tab-panel` (Angular master) to native HTML/CSS/JS: src/components/tabs/tabs.html (horizontal + vertical example groups, explicit id/aria-controls/aria-selected/tabindex/data-value wiring, panels as siblings linked by id), tabs.css (BEM classes backed by tokens, logical border-inline-end-width for vertical orientation), tabs.js (VfTabs class - roving tabindex, click + keyboard selection, ArrowRight/Down and ArrowLeft/Up navigation with wraparound and disabled-tab skipping matching Angular's non-orientation-gated arrow handling, Home/End support, auto-selects first enabled tab if none pre-marked, dispatches 'vf-tabs:change'), tabs.test.js, docs/components/tabs.md, and .migration/analysis/tabs.json. Exported VfTabs/initTabs from src/index.js. Also fixed an internal inconsistency in accordion.html where the standalone item still had the old placeholder chevron SVG instead of the real Angular arrow-down4 icon used by the group items. Verified live in the browser via the playground demo: clicking 'Billing' correctly selects it and switches the visible panel, and ArrowRight from Billing correctly skips the disabled 'Security' tab and wraps back to 'Profile'.",
+      "missingInfoCount": 6,
+      "caveat": "tabs.test.js could not be executed - no node_modules and npm registry unreachable in this environment. Tests are written but unverified.",
+      "canResume": true
+    },
+    {
+      "name": "component-table-complete",
+      "timestamp": "2026-09-20T18:30:00.000Z",
+      "phase": "component-migration",
+      "summary": "Ported `table[vfTable]`/`tr[vfTableRow]`/`th[vfTableHead]`/`td[vfTableCell]`/`input[vfTableSelectAll]`/`input[vfTableSelectRow]` (Angular master) to native HTML/CSS/JS: src/components/table/table.html (3 demos - selectable/sortable/striped with a disabled row, compact density with align modifiers, sticky header in a scrollable container), table.css (BEM classes backed by tokens, shared `.vf-table__cell` element class for both th/td matching Angular's identical density/align/numeric variant maps, hand-drawn checkbox pseudo-elements, verbatim sort-arrow SVG extracted from table.ts), table.js (VfTable class - 3-state sort cycling with in-place DOM row reordering since there's no consumer data layer here, single/multiple/none selection modes, select-all with indeterminate state excluding disabled rows, dispatches 'vf-table:sort-change'/'vf-table:selection-change'), table.test.js (mirrors table.spec.ts cases), docs/components/table.md, and .migration/analysis/table.json. Exported VfTable/initTables from src/index.js. Verified live in the browser: select-all correctly checks both selectable rows and excludes the disabled one, sorting by Amount correctly reorders the DOM rows ascending, single-row selection correctly flips select-all to the indeterminate state.",
+      "missingInfoCount": 6,
+      "caveat": "table.test.js could not be executed - no node_modules and npm registry unreachable in this environment. Tests are written but unverified.",
+      "canResume": true
+    },
+    {
+      "name": "component-sidebar-nav-complete",
+      "timestamp": "2026-09-20T19:30:00.000Z",
+      "phase": "component-migration",
+      "summary": "Ported `vf-sidebar-nav`/`button[vfSidebarNavToggle]`/`vf-sidebar-nav-section`/`a|button[vfSidebarNavItem]`/`vf-sidebar-nav-user` (Angular master) to native HTML/CSS/JS: src/components/sidebar-nav/sidebar-nav.html (header with brand+toggle, scrollable body with two sections - one unlabeled, one labeled 'Resources' - an active item with badge, a disabled item, footer with a badge'd cart item and a user card), sidebar-nav.css (BEM classes backed by tokens, single `.vf-sidebar-nav--collapsed` root modifier cascading to every descendant exactly like Angular's shared collapsed() injection, sidebar-nav-transition width animation), sidebar-nav.js (VfSidebarNav class - toggles the one root class + syncs the toggle button's aria-expanded/aria-label, supports an optional data-aria-label override, dispatches 'vf-sidebar-nav:change' only on genuine user toggles not on initial construction), sidebar-nav.test.js (mirrors sidebar-nav.spec.ts cases plus extra coverage for the init-vs-toggle event distinction and the aria-label override), docs/components/sidebar-nav.md, and .migration/analysis/sidebar-nav.json. Exported VfSidebarNav/initSidebarNavs from src/index.js. Verified live in the browser: clicking the toggle correctly collapsed the rail (brand name, item labels, badge text, section label, and user info/action all hid via the cascading CSS class) and swapped the toggle's aria-label to 'Expand sidebar'.",
+      "missingInfoCount": 6,
+      "caveat": "sidebar-nav.test.js could not be executed - no node_modules and npm registry unreachable in this environment. Tests are written but unverified. A handful of live-browser toggle clicks in this session intermittently timed out on Playwright's actionability 'stable' check (same unrelated browser-tool flakiness observed during the table component's verification, previously root-caused to a blocking native alert() elsewhere on the page) - one clean, uninterrupted click was captured and confirmed all expected collapse behavior.",
+      "canResume": true
+    },
+    {
+      "name": "component-drawer-complete",
+      "timestamp": "2026-09-20T20:30:00.000Z",
+      "phase": "component-migration",
+      "summary": "Ported `vf-drawer` (Angular master) to native HTML/CSS/JS: src/components/drawer/drawer.html (end-anchored medium drawer demo with header/body/footer, using vf-button classes for the trigger/action buttons), drawer.css (backdrop + panel with side/size modifiers backed by tokens, drawer-panel-transition/drawer-backdrop-transition durations/easing; header/footer/close/title/description classes explicitly documented as demo-only since Angular's slots have zero built-in styling), drawer.js (VfDrawer class - hand-rolled Tab focus trap, Escape/backdrop dismissal, real `inert` attribute toggling, a static `openCount` counter shared across instances for body scroll lock, focus-in-on-open + focus-restore-on-close, dispatches 'vf-drawer:open'/'vf-drawer:close'), drawer.test.js (mirrors drawer.spec.ts cases plus extra coverage for inert/scroll-lock/close-button), docs/components/drawer.md, and .migration/analysis/drawer.json. Exported VfDrawer/initDrawers from src/index.js. Verified structurally in the browser (accessibility snapshot confirms role=dialog, aria-modal, header/body/footer content, and correctly-enhanced trigger/action buttons) - interactive click verification (open/close/focus-trap) was blocked this session by the browser tab being backgrounded/not visible (ALL clicks on the page, including previously-verified controls, timed out uniformly), not a defect in the component.",
+      "missingInfoCount": 6,
+      "caveat": "drawer.test.js could not be executed - no node_modules and npm registry unreachable in this environment. Tests are written but unverified.",
+      "canResume": true
     }
   ]
 }

@@ -1,0 +1,149 @@
+/**
+ * vf-drawer
+ *
+ * Verified against: projects/ui/src/lib/drawer/drawer.variants.ts + the
+ * `drawer-panel-transition`/`drawer-backdrop-transition` utilities in theme.css (Angular
+ * source, `master` branch, vf-dynamic-catalog-components). Only `.vf-drawer`,
+ * `.vf-drawer__backdrop`, `.vf-drawer__panel` (+ modifiers) and `.vf-drawer__body` map to
+ * the actual Angular component - `.vf-drawer__header`/`__footer`/`__close`/`__title`/
+ * `__description` below are demo-only helper classes (Angular's header/footer slots ship
+ * with zero built-in styling; the story applies its own inline classes), see drawer.md.
+ */
+
+.vf-drawer__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40; /* one below --vf-z-index-modal (50), matches drawer.ts's bare `z-40` */
+  background-color: var(--vf-color-overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition-property: opacity;
+  transition-duration: var(--vf-transition-duration-base);
+  transition-timing-function: var(--vf-transition-easing-smooth); /* --ease-emphasized */
+}
+
+.vf-drawer--open .vf-drawer__backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.vf-drawer__panel {
+  position: fixed;
+  top: var(--vf-space-md); /* inset-y-4 */
+  bottom: var(--vf-space-md);
+  z-index: var(--vf-z-index-modal);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--vf-color-ink-50);
+  color: var(--vf-color-text-primary);
+  border: var(--vf-border-width-thin) solid var(--vf-color-border);
+  border-radius: var(--vf-border-radius-lg); /* rounded-overlay */
+  box-shadow: var(--vf-shadow-lg); /* shadow-overlay */
+  outline: none;
+  transition-property: transform;
+  transition-duration: var(--vf-transition-duration-base);
+  transition-timing-function: var(--vf-transition-easing-smooth); /* --ease-emphasized */
+}
+
+/* Angular's translate direction is physical (not RTL-aware) - ported as-is; only the
+   resting position (inset-inline-start/end below) is logical/RTL-safe. */
+.vf-drawer__panel--start {
+  inset-inline-start: var(--vf-space-md); /* start-4 */
+  transform: translateX(calc(-100% - 1rem));
+}
+
+.vf-drawer__panel--end {
+  inset-inline-end: var(--vf-space-md); /* end-4 */
+  transform: translateX(calc(100% + 1rem));
+}
+
+.vf-drawer--open .vf-drawer__panel {
+  transform: translateX(0);
+}
+
+.vf-drawer__panel--sm {
+  width: 20rem; /* w-80 */
+}
+
+.vf-drawer__panel--md {
+  width: 24rem; /* w-96 */
+}
+
+.vf-drawer__panel--lg {
+  width: 30rem;
+}
+
+/* Declared after the side/size rules above so it wins when combined with either side
+   modifier, matching how size="full" sets both `start-4`/`end-4` in drawer.variants.ts
+   and overrides whichever single-side inset the `side` variant had set. */
+.vf-drawer__panel--full {
+  inset-inline: var(--vf-space-md);
+  width: auto;
+}
+
+.vf-drawer__body {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.vf-drawer__header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--vf-space-md); /* gap-4 */
+  padding: var(--vf-space-md); /* p-4 */
+  border-bottom: var(--vf-border-width-thin) solid var(--vf-color-border);
+}
+
+.vf-drawer__header-text {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--vf-space-xs);
+}
+
+.vf-drawer__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.vf-drawer__description {
+  margin: 0;
+  color: var(--vf-color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.vf-drawer__close {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: var(--vf-border-radius-sm);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.vf-drawer__close:hover {
+  background-color: var(--vf-color-ink-100);
+}
+
+.vf-drawer__close:focus-visible {
+  outline-color: var(--vf-color-focus);
+}
+
+.vf-drawer__footer {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: flex-end;
+  gap: var(--vf-space-sm); /* gap-2 */
+  padding: var(--vf-space-md); /* p-4 */
+  border-top: var(--vf-border-width-thin) solid var(--vf-color-border);
+}

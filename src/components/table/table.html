@@ -1,0 +1,147 @@
+<!--
+  vf-table demo markup.
+  Verified against: projects/ui/src/lib/table/table.ts + table.stories.ts (Angular source,
+  `master` branch, vf-dynamic-catalog-components).
+
+  Angular's `<table vfTable>`/`<tr vfTableRow>`/`<th vfTableHead>`/`<td vfTableCell>` map
+  1:1 onto plain semantic `<table>`/`<tr>`/`<th>`/`<td>` here - no extra ARIA roles are
+  needed since the native elements already imply table/row/columnheader/cell roles.
+-->
+
+<link rel="stylesheet" href="/tokens/theme.css" />
+<link rel="stylesheet" href="/src/components/table/table.css" />
+
+<h3>Selectable &amp; sortable (striped)</h3>
+<div class="vf-table__container">
+  <table class="vf-table vf-table--striped" data-component="table" data-selection-mode="multiple">
+    <thead>
+      <tr class="vf-table__row">
+        <th class="vf-table__cell vf-table__cell--head" style="width: 3rem">
+          <input type="checkbox" class="vf-table__checkbox" data-table-select-all aria-label="Select all rows" />
+        </th>
+        <th class="vf-table__cell vf-table__cell--head" data-sort-key="id" aria-sort="none">
+          <span class="vf-table__sort-trigger" role="button" tabindex="0">
+            Invoice
+            <svg class="vf-table__sort-icon" viewBox="0 0 10 6" aria-hidden="true" focusable="false">
+              <path d="M5 0 10 6H0z" fill="currentColor" />
+            </svg>
+          </span>
+        </th>
+        <th class="vf-table__cell vf-table__cell--head" data-sort-key="account" aria-sort="none">
+          <span class="vf-table__sort-trigger" role="button" tabindex="0">
+            Account
+            <svg class="vf-table__sort-icon" viewBox="0 0 10 6" aria-hidden="true" focusable="false">
+              <path d="M5 0 10 6H0z" fill="currentColor" />
+            </svg>
+          </span>
+        </th>
+        <th class="vf-table__cell vf-table__cell--head" data-sort-key="status" aria-sort="none">
+          <span class="vf-table__sort-trigger" role="button" tabindex="0">
+            Status
+            <svg class="vf-table__sort-icon" viewBox="0 0 10 6" aria-hidden="true" focusable="false">
+              <path d="M5 0 10 6H0z" fill="currentColor" />
+            </svg>
+          </span>
+        </th>
+        <th class="vf-table__cell vf-table__cell--head vf-table__cell--numeric" data-sort-key="amount" aria-sort="none">
+          <span class="vf-table__sort-trigger" role="button" tabindex="0">
+            Amount
+            <svg class="vf-table__sort-icon" viewBox="0 0 10 6" aria-hidden="true" focusable="false">
+              <path d="M5 0 10 6H0z" fill="currentColor" />
+            </svg>
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="vf-table__row vf-table__row--hoverable" data-value="INV-1042">
+        <td class="vf-table__cell"><input type="checkbox" class="vf-table__checkbox" data-table-select-row aria-label="Select INV-1042" /></td>
+        <td class="vf-table__cell vf-table__cell--strong">INV-1042</td>
+        <td class="vf-table__cell">Vodafone Business DE</td>
+        <td class="vf-table__cell"><span class="vf-table__badge vf-table__badge--success">Paid</span></td>
+        <td class="vf-table__cell vf-table__cell--numeric" data-sort-value="12480.50">€12,480.50</td>
+      </tr>
+      <tr class="vf-table__row vf-table__row--hoverable" data-value="INV-1043">
+        <td class="vf-table__cell"><input type="checkbox" class="vf-table__checkbox" data-table-select-row aria-label="Select INV-1043" /></td>
+        <td class="vf-table__cell vf-table__cell--strong">INV-1043</td>
+        <td class="vf-table__cell">Vodafone Retail UK</td>
+        <td class="vf-table__cell"><span class="vf-table__badge vf-table__badge--warning">Pending</span></td>
+        <td class="vf-table__cell vf-table__cell--numeric" data-sort-value="3190.00">€3,190.00</td>
+      </tr>
+      <tr class="vf-table__row vf-table__row--hoverable" data-value="INV-1044">
+        <td class="vf-table__cell"><input type="checkbox" class="vf-table__checkbox" data-table-select-row aria-label="Select INV-1044" /></td>
+        <td class="vf-table__cell vf-table__cell--strong">INV-1044</td>
+        <td class="vf-table__cell">Vodafone Enterprise ES</td>
+        <td class="vf-table__cell"><span class="vf-table__badge vf-table__badge--error">Overdue</span></td>
+        <td class="vf-table__cell vf-table__cell--numeric" data-sort-value="27845.75">€27,845.75</td>
+      </tr>
+      <tr class="vf-table__row vf-table__row--hoverable" data-value="INV-1045">
+        <td class="vf-table__cell"><input type="checkbox" class="vf-table__checkbox" data-table-select-row aria-label="Select INV-1045" /></td>
+        <td class="vf-table__cell vf-table__cell--strong">INV-1045</td>
+        <td class="vf-table__cell">Vodafone IoT NL</td>
+        <td class="vf-table__cell"><span class="vf-table__badge vf-table__badge--success">Paid</span></td>
+        <td class="vf-table__cell vf-table__cell--numeric" data-sort-value="890.25">€890.25</td>
+      </tr>
+      <tr class="vf-table__row vf-table__row--disabled" data-value="INV-1046" data-disabled="true">
+        <td class="vf-table__cell"><input type="checkbox" class="vf-table__checkbox" data-table-select-row aria-label="Select INV-1046" disabled /></td>
+        <td class="vf-table__cell vf-table__cell--strong">INV-1046</td>
+        <td class="vf-table__cell">Vodafone Cloud IT (locked)</td>
+        <td class="vf-table__cell"><span class="vf-table__badge vf-table__badge--warning">Pending</span></td>
+        <td class="vf-table__cell vf-table__cell--numeric" data-sort-value="15620.00">€15,620.00</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p class="vf-table__caption">Sort and selection are announced via <code>vf-table:sort-change</code> / <code>vf-table:selection-change</code>.</p>
+
+<h3>Compact density</h3>
+<div class="vf-table__container">
+  <table class="vf-table vf-table--density-compact" data-component="table" data-selection-mode="none">
+    <thead>
+      <tr class="vf-table__row">
+        <th class="vf-table__cell vf-table__cell--head">Region</th>
+        <th class="vf-table__cell vf-table__cell--head vf-table__cell--align-center">Devices</th>
+        <th class="vf-table__cell vf-table__cell--head vf-table__cell--numeric">Uptime</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="vf-table__row">
+        <td class="vf-table__cell">EMEA</td>
+        <td class="vf-table__cell vf-table__cell--align-center">128</td>
+        <td class="vf-table__cell vf-table__cell--numeric">99.98%</td>
+      </tr>
+      <tr class="vf-table__row">
+        <td class="vf-table__cell">APAC</td>
+        <td class="vf-table__cell vf-table__cell--align-center">64</td>
+        <td class="vf-table__cell vf-table__cell--numeric">99.95%</td>
+      </tr>
+      <tr class="vf-table__row">
+        <td class="vf-table__cell">Americas</td>
+        <td class="vf-table__cell vf-table__cell--align-center">42</td>
+        <td class="vf-table__cell vf-table__cell--numeric">99.99%</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>Sticky header (scroll to see)</h3>
+<div class="vf-table__container" style="max-height: 11rem">
+  <table class="vf-table vf-table--sticky-header" data-component="table" data-selection-mode="none">
+    <thead>
+      <tr class="vf-table__row">
+        <th class="vf-table__cell vf-table__cell--head">Node</th>
+        <th class="vf-table__cell vf-table__cell--head vf-table__cell--numeric">Latency</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="vf-table__row"><td class="vf-table__cell">edge-01</td><td class="vf-table__cell vf-table__cell--numeric">12ms</td></tr>
+      <tr class="vf-table__row"><td class="vf-table__cell">edge-02</td><td class="vf-table__cell vf-table__cell--numeric">18ms</td></tr>
+      <tr class="vf-table__row"><td class="vf-table__cell">edge-03</td><td class="vf-table__cell vf-table__cell--numeric">9ms</td></tr>
+      <tr class="vf-table__row"><td class="vf-table__cell">edge-04</td><td class="vf-table__cell vf-table__cell--numeric">21ms</td></tr>
+      <tr class="vf-table__row"><td class="vf-table__cell">edge-05</td><td class="vf-table__cell vf-table__cell--numeric">15ms</td></tr>
+      <tr class="vf-table__row"><td class="vf-table__cell">edge-06</td><td class="vf-table__cell vf-table__cell--numeric">33ms</td></tr>
+      <tr class="vf-table__row"><td class="vf-table__cell">edge-07</td><td class="vf-table__cell vf-table__cell--numeric">11ms</td></tr>
+      <tr class="vf-table__row"><td class="vf-table__cell">edge-08</td><td class="vf-table__cell vf-table__cell--numeric">27ms</td></tr>
+    </tbody>
+  </table>
+</div>

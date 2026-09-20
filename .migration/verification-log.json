@@ -50,6 +50,62 @@
       "target": "playground/index.html Accordion showcase",
       "result": "pass",
       "notes": "Served statically and verified live in-browser: initial expanded item renders open, disabled item is inert and shows [disabled] in the a11y tree, and clicking a second item correctly closed the first (single-open exclusivity confirmed visually via screenshot). All module requests returned 200 in server logs, confirming no import/runtime errors."
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (tabs)",
+      "target": "src/components/tabs/*, docs/components/tabs.md, .migration/analysis/tabs.json",
+      "result": "partial",
+      "notes": "HTML/CSS/JS/docs/analysis created and traced 1:1 to tabs.ts + tabs.variants.ts. Static checks (get_errors) pass on all new files. tabs.test.js written (click select, disabled-ignored, auto-select-first, roving tabindex, arrow nav wrap+skip-disabled, Home/End, custom event, initTabs) but NOT executed - same npm registry/node_modules unavailability as button/accordion. Marked partial pending real test execution."
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (tabs)",
+      "target": "playground/index.html Tabs showcase",
+      "result": "pass",
+      "notes": "Served statically and verified live in-browser: clicking the 'Billing' tab correctly moves aria-selected/tabindex and swaps the visible tabpanel; pressing ArrowRight while on 'Billing' correctly skips the disabled 'Security' tab and wraps focus/selection back to 'Profile'. Confirmed via accessibility snapshot before/after each interaction, no console/module errors."
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (table)",
+      "target": "src/components/table/*, docs/components/table.md, .migration/analysis/table.json",
+      "result": "partial",
+      "notes": "HTML/CSS/JS/docs/analysis created and traced 1:1 to table.ts + table.variants.ts, including the verbatim sort-arrow SVG extracted from table.ts's inline template. Static checks (get_errors) pass on all new files. table.test.js written (sort cycling, column switching, DOM row reordering, single/multiple selection, select-all + indeterminate, disabled-row exclusion, aria-selected sync, custom events, initTables) but NOT executed - same npm registry/node_modules unavailability as prior components. Marked partial pending real test execution."
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (table)",
+      "target": "playground/index.html Table showcase",
+      "result": "pass",
+      "notes": "Served statically and verified live in-browser: select-all correctly checks the 2 selectable rows and leaves the disabled row (INV-1044) unchecked/excluded; clicking the Amount header correctly sorts the tbody rows ascending by numeric data-sort-value (3190.00, then 12480.50, then 27845.75); selecting a single row after select-all correctly flips the select-all checkbox to the indeterminate ('checked=mixed') state. Confirmed via accessibility snapshot before/after each interaction, no console/module errors. (Note: an initial round of clicks appeared to time out due to a blocking native `alert()` from the pre-existing Dark Mode demo button freezing the page's JS thread - unrelated to the table component; a fresh navigation resolved it.)"
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (sidebar-nav)",
+      "target": "src/components/sidebar-nav/*, docs/components/sidebar-nav.md, .migration/analysis/sidebar-nav.json",
+      "result": "partial",
+      "notes": "HTML/CSS/JS/docs/analysis created and traced 1:1 to sidebar-nav.ts + sidebar-nav.variants.ts + the sidebar-nav-transition utility in theme.css. Static checks (get_errors) pass on all new files. sidebar-nav.test.js written (navigation landmark/aria-label, active item aria-current, disabled item, badge rendering, toggle click + aria sync, initial-construction-does-not-dispatch, custom aria-label override, initSidebarNavs) but NOT executed - same npm registry/node_modules unavailability as prior components. Marked partial pending real test execution."
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (sidebar-nav)",
+      "target": "playground/index.html Sidebar Navigation showcase",
+      "result": "pass",
+      "notes": "Served statically and verified live in-browser: clicking the toggle collapsed the rail and correctly hid the brand name, all item labels, the 'Subscriptions' badge text, the 'Resources' section label, and the user name/role/action, while the toggle's own label swapped from 'Collapse sidebar' to 'Expand sidebar'. Some repeated toggle clicks in this session intermittently timed out on Playwright's actionability check (same unrelated browser-tool flakiness seen during table verification) but did not affect the one clean click used to confirm behavior."
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (drawer)",
+      "target": "src/components/drawer/*, docs/components/drawer.md, .migration/analysis/drawer.json",
+      "result": "partial",
+      "notes": "HTML/CSS/JS/docs/analysis created and traced 1:1 to drawer.ts + drawer.variants.ts + the drawer-panel-transition/drawer-backdrop-transition utilities in theme.css. Static checks (get_errors) pass on all new files. drawer.test.js written (closed-by-default + inert, trigger-opens-and-removes-inert, focus-moves-into-panel, scroll lock/unlock, backdrop close + opt-out, Escape close + opt-out, Tab focus trap wrap, data-drawer-close button, initDrawers) but NOT executed - same npm registry/node_modules unavailability as prior components. Marked partial pending real test execution."
+    },
+    {
+      "phase": "component-migration",
+      "step": "implement-native (drawer)",
+      "target": "playground/index.html Drawer showcase",
+      "result": "pass",
+      "notes": "Verified live in-browser once the tab was back in the foreground: clicking 'Open drawer' slides the panel in and moves focus to the panel's first focusable element (Close button), confirmed visually via screenshot (backdrop dimmed, panel anchored to the end edge). Escape correctly closes the drawer and restores focus to the original 'Open drawer' trigger. Shift+Tab from the first focusable element (Close) correctly wraps focus to the last one (Apply), confirming the Tab focus trap. All behaviors match drawer.spec.ts's expectations."
     }
   ]
 }

@@ -30,11 +30,13 @@
   justify-content: center;
   gap: var(--vf-space-xs); /* gap-1 */
   padding-inline: var(--vf-space-sm); /* px-2 */
+  border: none;
   border-bottom: var(--vf-border-width-base) solid var(--vf-color-ink-200); /* border-b-[1.5px], unselected color */
   border-start-start-radius: 0.5rem; /* rounded-t-lg - Tailwind default radius scale, not a Vodafone token */
   border-start-end-radius: 0.5rem;
   background: transparent;
   color: var(--vf-color-ink-950);
+  font-family: var(--vf-font-family-base);
   font-size: var(--vf-font-size-base);
   font-weight: var(--vf-font-weight-medium);
   white-space: nowrap;

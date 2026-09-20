@@ -1,0 +1,242 @@
+/**
+ * vf-table / vf-table__row / vf-table__cell
+ *
+ * Verified against: projects/ui/src/lib/table/table.variants.ts (Angular source, `master`
+ * branch, vf-dynamic-catalog-components). Density/align/numeric are identical variant
+ * maps shared by `th vfTableHead` and `td vfTableCell` in Angular (both read them off the
+ * injected `TableComponent`/local inputs) - mirrored here as one shared `.vf-table__cell`
+ * element class plus a `--head` modifier for the header-only styling.
+ */
+
+.vf-table__container {
+  position: relative;
+  width: 100%;
+  overflow: auto;
+  background-color: var(--vf-color-ink-50);
+  border: var(--vf-border-width-thin) solid var(--vf-color-border);
+  border-radius: var(--vf-border-radius-md); /* rounded-surface */
+}
+
+.vf-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: start;
+  font-size: var(--vf-font-size-base, 0.875rem);
+  background-color: var(--vf-color-ink-50);
+  color: var(--vf-color-text-primary);
+}
+
+.vf-table__row {
+  border-bottom: var(--vf-border-width-thin) solid var(--vf-color-border);
+  transition: background-color 150ms ease;
+}
+
+.vf-table__row:last-child {
+  border-bottom: none;
+}
+
+/* Angular applies `hoverable` to every data row (isDataRow() is true for tbody rows,
+   false for the header row), never to the `thead` row - kept as an explicit modifier
+   here rather than a bare `tr:hover` selector so the header row is excluded the same way. */
+.vf-table__row--hoverable:hover {
+  background-color: var(--vf-color-ink-100);
+}
+
+.vf-table__row--selected {
+  background-color: var(--vf-color-brand-50);
+}
+
+.vf-table__row--disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Source quirk (odd:bg-ink-50), verified against table.variants.ts: in light mode this is
+   the same value as the table's own background, so striping is only visually distinct in
+   dark mode (odd:bg-ink-900/40) - not a bug in this port, just an inherited Angular quirk. */
+.vf-table--striped tbody .vf-table__row:nth-of-type(odd) {
+  background-color: var(--vf-color-ink-50);
+}
+
+.dark .vf-table--striped tbody .vf-table__row:nth-of-type(odd) {
+  background-color: color-mix(in oklch, var(--vf-color-ink-900) 40%, transparent);
+}
+
+.vf-table__cell {
+  padding: 0.625rem 1rem; /* comfortable density default: py-2.5 px-4 */
+  text-align: start;
+  vertical-align: middle;
+}
+
+.vf-table__cell--head {
+  font-weight: var(--vf-font-weight-medium, 500);
+  white-space: nowrap;
+  color: var(--vf-color-text-secondary);
+  background-color: var(--vf-color-ink-50);
+}
+
+.dark .vf-table__cell--head {
+  background-color: var(--vf-color-ink-900);
+}
+
+.vf-table--sticky-header .vf-table__cell--head {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.vf-table--density-compact .vf-table__cell {
+  padding: 0.375rem 0.75rem; /* py-1.5 px-3 */
+}
+
+.vf-table--density-spacious .vf-table__cell {
+  padding: 1rem 1.5rem; /* py-4 px-6 */
+}
+
+.vf-table__cell--align-center {
+  text-align: center;
+}
+
+.vf-table__cell--align-end {
+  text-align: end;
+}
+
+/* Declared after the align modifiers so numeric wins when both are present, matching
+   tailwind-merge's precedence in table.variants.ts (numeric's `text-right` is later in
+   the class list than align's `text-left`). */
+.vf-table__cell--numeric {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.vf-table__sort-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem; /* gap-1.5 */
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  border-radius: var(--vf-border-radius-sm);
+}
+
+.vf-table__sort-trigger:hover {
+  color: var(--vf-color-text-primary);
+}
+
+.vf-table__sort-trigger:focus-visible {
+  outline-color: var(--vf-color-focus); /* focus-ring utility */
+}
+
+.vf-table__sort-icon {
+  width: 0.625rem; /* size-2.5 */
+  height: 0.625rem;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+
+[aria-sort='ascending'] .vf-table__sort-icon,
+[aria-sort='descending'] .vf-table__sort-icon {
+  opacity: 1;
+}
+
+[aria-sort='descending'] .vf-table__sort-icon {
+  transform: rotate(180deg);
+}
+
+[aria-sort='none'] .vf-table__sort-trigger:hover .vf-table__sort-icon {
+  opacity: 0.4;
+}
+
+.vf-table__checkbox {
+  position: relative;
+  display: inline-flex;
+  width: 1rem; /* size-4 */
+  height: 1rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  appearance: none;
+  border: var(--vf-border-width-thin) solid var(--vf-color-ink-300);
+  border-radius: 0.25rem;
+  background-color: var(--vf-color-surface);
+  transition: background-color 150ms ease, border-color 150ms ease;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.vf-table__checkbox:focus-visible {
+  outline-color: var(--vf-color-focus);
+}
+
+.vf-table__checkbox:checked,
+.vf-table__checkbox:indeterminate {
+  border-color: var(--vf-color-brand-600);
+  background-color: var(--vf-color-brand-600);
+}
+
+.vf-table__checkbox::before {
+  content: '';
+  display: none;
+  width: 0.5rem;
+  height: 0.125rem;
+  border-radius: var(--vf-border-radius-full);
+  background-color: var(--vf-color-surface);
+}
+
+.vf-table__checkbox:indeterminate::before {
+  display: block;
+}
+
+.vf-table__checkbox::after {
+  content: '';
+  display: none;
+  width: 0.25rem;
+  height: 0.5rem;
+  border-bottom: 2px solid var(--vf-color-surface);
+  border-right: 2px solid var(--vf-color-surface);
+  transform: translateY(-1px) rotate(45deg);
+}
+
+.vf-table__checkbox:checked::after {
+  display: block;
+}
+
+.vf-table__checkbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.vf-table__badge {
+  display: inline-block;
+  padding: 0.125rem 0.5rem; /* py-0.5 px-2 */
+  border-radius: var(--vf-border-radius-sm); /* rounded-control */
+  font-size: 0.75rem;
+  font-weight: var(--vf-font-weight-medium, 500);
+}
+
+.vf-table__badge--success {
+  color: var(--vf-color-success);
+  background-color: color-mix(in oklch, var(--vf-color-success) 15%, transparent);
+}
+
+.vf-table__badge--warning {
+  color: var(--vf-color-warning);
+  background-color: color-mix(in oklch, var(--vf-color-warning) 15%, transparent);
+}
+
+.vf-table__badge--error {
+  color: var(--vf-color-error);
+  background-color: color-mix(in oklch, var(--vf-color-error) 15%, transparent);
+}
+
+.vf-table__cell--strong {
+  font-weight: var(--vf-font-weight-medium, 500);
+}
+
+.vf-table__caption {
+  margin-top: var(--vf-space-sm);
+  color: var(--vf-color-text-secondary);
+  font-size: 0.75rem;
+}

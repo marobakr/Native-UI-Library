@@ -4,17 +4,17 @@
   "currentPhase": "component-migration",
   "currentStep": "select-next-component",
   "currentComponent": null,
-  "lastCheckpoint": "component-accordion-complete",
+  "lastCheckpoint": "component-drawer-complete",
   "canResume": true,
   "nextAction": {
     "phase": "component-migration",
     "step": "select-next-component",
-    "instruction": "Select the next component from manifest.json migrationOrder (\"tabs\") and begin analyze-component"
+    "instruction": "Select the next component from manifest.json migrationOrder (\"dialog\") and begin analyze-component"
   },
   "progress": {
     "phasesCompleted": ["discovery"],
-    "componentsCompleted": ["button", "accordion"],
+    "componentsCompleted": ["button", "accordion", "tabs", "table", "sidebar-nav", "drawer"],
     "totalComponents": 8,
-    "completedComponents": 2
+    "completedComponents": 6
   }
 }

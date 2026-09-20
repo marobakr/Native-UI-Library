@@ -25,59 +25,90 @@
   enabled tab (wraps), Home/End = first/last enabled tab. Click selects directly.
 -->
 
-<!-- Horizontal (default) -->
-<div class="vf-tabs" data-component="tabs" role="tablist" aria-orientation="horizontal" aria-label="Account settings">
+<!-- Horizontal (default) - matches Angular's `Default` story exactly: 5 tabs, aria-label
+     "Account sections", initially selected value "spend" (Spend details). -->
+<div class="vf-tabs" data-component="tabs" role="tablist" aria-orientation="horizontal" aria-label="Account sections">
+  <button
+    type="button"
+    class="vf-tabs__tab"
+    role="tab"
+    id="vf-tabs-1-tab-overview"
+    aria-controls="vf-tabs-1-panel-overview"
+    aria-selected="false"
+    tabindex="-1"
+    data-value="overview"
+  >
+    Overview
+  </button>
+  <button
+    type="button"
+    class="vf-tabs__tab"
+    role="tab"
+    id="vf-tabs-1-tab-solutions"
+    aria-controls="vf-tabs-1-panel-solutions"
+    aria-selected="false"
+    tabindex="-1"
+    data-value="solutions"
+  >
+    Solutions
+  </button>
+  <button
+    type="button"
+    class="vf-tabs__tab"
+    role="tab"
+    id="vf-tabs-1-tab-mobility"
+    aria-controls="vf-tabs-1-panel-mobility"
+    aria-selected="false"
+    tabindex="-1"
+    data-value="mobility"
+  >
+    Mobility
+  </button>
   <button
     type="button"
     class="vf-tabs__tab vf-tabs__tab--selected"
     role="tab"
-    id="vf-tabs-1-tab-profile"
-    aria-controls="vf-tabs-1-panel-profile"
+    id="vf-tabs-1-tab-spend"
+    aria-controls="vf-tabs-1-panel-spend"
     aria-selected="true"
     tabindex="0"
-    data-value="profile"
+    data-value="spend"
   >
-    Profile
+    Spend details
   </button>
   <button
     type="button"
     class="vf-tabs__tab"
     role="tab"
-    id="vf-tabs-1-tab-billing"
-    aria-controls="vf-tabs-1-panel-billing"
+    id="vf-tabs-1-tab-dashboard"
+    aria-controls="vf-tabs-1-panel-dashboard"
     aria-selected="false"
     tabindex="-1"
-    data-value="billing"
+    data-value="dashboard"
   >
-    Billing
-  </button>
-  <button
-    type="button"
-    class="vf-tabs__tab"
-    role="tab"
-    id="vf-tabs-1-tab-security"
-    aria-controls="vf-tabs-1-panel-security"
-    aria-selected="false"
-    tabindex="-1"
-    data-value="security"
-    disabled
-  >
-    Security
+    Add dashboard view
   </button>
 </div>
 
-<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-1-panel-profile" aria-labelledby="vf-tabs-1-tab-profile" tabindex="0">
-  Update your name, email, and photo.
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-1-panel-overview" aria-labelledby="vf-tabs-1-tab-overview" tabindex="0" hidden>
+  Overview content.
 </div>
-<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-1-panel-billing" aria-labelledby="vf-tabs-1-tab-billing" tabindex="0" hidden>
-  Manage payment methods and invoices.
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-1-panel-solutions" aria-labelledby="vf-tabs-1-tab-solutions" tabindex="0" hidden>
+  Solutions content.
 </div>
-<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-1-panel-security" aria-labelledby="vf-tabs-1-tab-security" tabindex="0" hidden>
-  Security settings are unavailable for this account.
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-1-panel-mobility" aria-labelledby="vf-tabs-1-tab-mobility" tabindex="0" hidden>
+  Mobility content.
+</div>
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-1-panel-spend" aria-labelledby="vf-tabs-1-tab-spend" tabindex="0">
+  Spend details content.
+</div>
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-1-panel-dashboard" aria-labelledby="vf-tabs-1-tab-dashboard" tabindex="0" hidden>
+  Add dashboard view content.
 </div>
 
-<!-- Vertical -->
-<div class="vf-tabs vf-tabs--vertical" data-component="tabs" role="tablist" aria-orientation="vertical" aria-label="Documentation sections">
+<!-- With a disabled tab - matches Angular's `Disabled` story exactly: 3 tabs, "Solutions"
+     disabled, initially selected value "overview". -->
+<div class="vf-tabs" data-component="tabs" role="tablist" aria-orientation="horizontal" aria-label="Account sections">
   <button
     type="button"
     class="vf-tabs__tab vf-tabs__tab--selected"
@@ -94,19 +125,117 @@
     type="button"
     class="vf-tabs__tab"
     role="tab"
-    id="vf-tabs-2-tab-api"
-    aria-controls="vf-tabs-2-panel-api"
+    id="vf-tabs-2-tab-solutions"
+    aria-controls="vf-tabs-2-panel-solutions"
     aria-selected="false"
     tabindex="-1"
-    data-value="api"
+    data-value="solutions"
+    disabled
   >
-    API
+    Solutions
+  </button>
+  <button
+    type="button"
+    class="vf-tabs__tab"
+    role="tab"
+    id="vf-tabs-2-tab-mobility"
+    aria-controls="vf-tabs-2-panel-mobility"
+    aria-selected="false"
+    tabindex="-1"
+    data-value="mobility"
+  >
+    Mobility
   </button>
 </div>
 
 <div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-2-panel-overview" aria-labelledby="vf-tabs-2-tab-overview" tabindex="0">
   Overview content.
 </div>
-<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-2-panel-api" aria-labelledby="vf-tabs-2-tab-api" tabindex="0" hidden>
-  API reference content.
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-2-panel-solutions" aria-labelledby="vf-tabs-2-tab-solutions" tabindex="0" hidden>
+  Solutions content.
 </div>
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-2-panel-mobility" aria-labelledby="vf-tabs-2-tab-mobility" tabindex="0" hidden>
+  Mobility content.
+</div>
+
+<!-- Vertical orientation - matches Angular's `Vertical` story exactly: same 5 tabs as
+     Default, just `orientation="vertical"` (content/labels/aria-label are unchanged). -->
+<div class="vf-tabs vf-tabs--vertical" data-component="tabs" role="tablist" aria-orientation="vertical" aria-label="Account sections">
+  <button
+    type="button"
+    class="vf-tabs__tab"
+    role="tab"
+    id="vf-tabs-3-tab-overview"
+    aria-controls="vf-tabs-3-panel-overview"
+    aria-selected="false"
+    tabindex="-1"
+    data-value="overview"
+  >
+    Overview
+  </button>
+  <button
+    type="button"
+    class="vf-tabs__tab"
+    role="tab"
+    id="vf-tabs-3-tab-solutions"
+    aria-controls="vf-tabs-3-panel-solutions"
+    aria-selected="false"
+    tabindex="-1"
+    data-value="solutions"
+  >
+    Solutions
+  </button>
+  <button
+    type="button"
+    class="vf-tabs__tab"
+    role="tab"
+    id="vf-tabs-3-tab-mobility"
+    aria-controls="vf-tabs-3-panel-mobility"
+    aria-selected="false"
+    tabindex="-1"
+    data-value="mobility"
+  >
+    Mobility
+  </button>
+  <button
+    type="button"
+    class="vf-tabs__tab vf-tabs__tab--selected"
+    role="tab"
+    id="vf-tabs-3-tab-spend"
+    aria-controls="vf-tabs-3-panel-spend"
+    aria-selected="true"
+    tabindex="0"
+    data-value="spend"
+  >
+    Spend details
+  </button>
+  <button
+    type="button"
+    class="vf-tabs__tab"
+    role="tab"
+    id="vf-tabs-3-tab-dashboard"
+    aria-controls="vf-tabs-3-panel-dashboard"
+    aria-selected="false"
+    tabindex="-1"
+    data-value="dashboard"
+  >
+    Add dashboard view
+  </button>
+</div>
+
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-3-panel-overview" aria-labelledby="vf-tabs-3-tab-overview" tabindex="0" hidden>
+  Overview content.
+</div>
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-3-panel-solutions" aria-labelledby="vf-tabs-3-tab-solutions" tabindex="0" hidden>
+  Solutions content.
+</div>
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-3-panel-mobility" aria-labelledby="vf-tabs-3-tab-mobility" tabindex="0" hidden>
+  Mobility content.
+</div>
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-3-panel-spend" aria-labelledby="vf-tabs-3-tab-spend" tabindex="0">
+  Spend details content.
+</div>
+<div class="vf-tabs__panel" role="tabpanel" id="vf-tabs-3-panel-dashboard" aria-labelledby="vf-tabs-3-tab-dashboard" tabindex="0" hidden>
+  Add dashboard view content.
+</div>
+
