@@ -1,0 +1,172 @@
+/**
+ * vf-dialog
+ *
+ * Verified against: projects/ui/src/lib/dialog/overlay.variants.ts + modal-surface.ts's
+ * `sizeFor('center', maxWidth)` + dialog.variants.ts (Angular source, `master` branch,
+ * vf-dynamic-catalog-components). Angular's dialog always renders at `placement: 'center'`
+ * (VfDialog.open() hardcodes it) - `size` only ever changes max-width.
+ */
+
+.vf-dialog {
+  display: none;
+}
+
+.vf-dialog--open {
+  display: block; /* backdrop/panel are position:fixed, so this wrapper's own box is irrelevant */
+}
+
+.vf-dialog__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40; /* one below --vf-z-index-modal (50), same convention as drawer's backdrop */
+  background-color: var(--vf-color-overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition-property: opacity;
+  transition-duration: var(--vf-transition-duration-base);
+  transition-timing-function: var(--vf-transition-easing-smooth); /* --ease-emphasized */
+  transition-behavior: allow-discrete;
+}
+
+.vf-dialog--open .vf-dialog__backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* `display:none -> block` doesn't animate on its own - `@starting-style` supplies the
+   "before" frame so the fade-in actually plays every time the dialog re-opens (matches
+   Angular's `starting:` Tailwind variant, which relies on the same CSS feature). */
+@starting-style {
+  .vf-dialog--open .vf-dialog__backdrop {
+    opacity: 0;
+  }
+}
+
+.vf-dialog__panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: var(--vf-z-index-modal);
+  display: flex;
+  width: calc(100vw - 2rem);
+  max-height: calc(100dvh - 2rem);
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--vf-color-surface);
+  color: var(--vf-color-text-primary);
+  border-radius: var(--vf-border-radius-md); /* rounded-surface */
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); /* shadow-xl - Tailwind default, not a Vodafone token (see missing-info.json) */
+  outline: none;
+  transition-property: opacity, transform;
+  transition-duration: var(--vf-transition-duration-base); /* duration-200 */
+  transition-timing-function: ease-out;
+  transition-behavior: allow-discrete;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Enter-only motion (no exit animation): matches Angular's `@starting-style` / Tailwind
+   `starting:` variant - CDK removes the overlay immediately on close, by design. */
+@starting-style {
+  .vf-dialog--open .vf-dialog__panel {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0;
+  }
+}
+
+.vf-dialog__panel--sm {
+  max-width: 24rem;
+}
+
+.vf-dialog__panel--md {
+  max-width: 32rem;
+}
+
+.vf-dialog__panel--lg {
+  max-width: 44rem;
+}
+
+.vf-dialog__panel--xl {
+  max-width: 60rem;
+}
+
+.vf-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--vf-space-sm); /* gap-3, using --vf-space-sm(8px) since gap-3(12px) has no token */
+  padding: var(--vf-space-lg) var(--vf-space-lg) var(--vf-space-sm); /* px-6 pt-6 pb-2 */
+}
+
+.vf-dialog__title {
+  min-width: 0;
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.vf-dialog__close-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem; /* size-9 */
+  height: 2.25rem;
+  margin-top: -0.25rem; /* -mt-1 */
+  margin-inline-end: -0.5rem; /* -me-2 */
+  border: none;
+  border-radius: var(--vf-border-radius-md); /* rounded-lg */
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 150ms ease;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.vf-dialog__close-icon:hover {
+  opacity: 1;
+}
+
+.vf-dialog__close-icon:focus-visible {
+  outline-color: var(--vf-color-focus);
+}
+
+.vf-dialog__close-icon svg {
+  width: 1.25rem; /* size-5 */
+  height: 1.25rem;
+}
+
+.vf-dialog__body {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: var(--vf-space-sm) var(--vf-space-lg); /* px-6 py-2 */
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.vf-dialog__description {
+  margin: 0;
+  color: var(--vf-color-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+}
+
+.vf-dialog__footer {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column-reverse;
+  gap: var(--vf-space-sm); /* gap-2 */
+  padding: var(--vf-space-md) var(--vf-space-lg) var(--vf-space-lg); /* px-6 pt-4 pb-6 */
+}
+
+/* sm breakpoint (Tailwind default: 640px) */
+@media (min-width: 40rem) {
+  .vf-dialog__footer {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,52 @@
+<!--
+  vf-dialog demo markup (the "Suspend line" alertdialog confirmation from dialog.stories.ts).
+  Verified against: projects/ui/src/lib/dialog/dialog.ts + modal-surface.ts +
+  overlay.variants.ts + dialog.stories.ts (Angular source, `master` branch,
+  vf-dynamic-catalog-components).
+
+  Angular's dialog has NO Angular CDK equivalent here - focus trap, scroll lock and
+  Escape/backdrop dismissal are hand-rolled in dialog.js, following the exact same
+  pattern already used by drawer.js (drawer.ts is itself CDK-free in the Angular source,
+  so it was already the closest reference implementation).
+
+  Unlike drawer (always end/start anchored), a `vf-dialog` is ALWAYS centered - `size`
+  only controls max-width (sm/md/lg/xl), matching VfDialog.open()'s hardcoded
+  `placement: 'center'`.
+-->
+
+<link rel="stylesheet" href="/tokens/theme.css" />
+<link rel="stylesheet" href="/src/components/button/button.css" />
+<link rel="stylesheet" href="/src/components/dialog/dialog.css" />
+
+<button type="button" class="vf-button vf-button--danger vf-button--md" data-dialog-open="demo-dialog">Suspend line</button>
+
+<div class="vf-dialog" data-component="dialog" id="demo-dialog" data-dismissible="true" data-autofocus="dialog" inert>
+  <div class="vf-dialog__backdrop" data-dialog-backdrop></div>
+  <div
+    class="vf-dialog__panel vf-dialog__panel--sm"
+    role="alertdialog"
+    aria-modal="true"
+    aria-labelledby="demo-dialog-title"
+    aria-describedby="demo-dialog-description"
+    tabindex="-1"
+    data-dialog-panel
+  >
+    <div class="vf-dialog__header">
+      <h2 class="vf-dialog__title" id="demo-dialog-title">Suspend 010 1234 5678?</h2>
+      <button type="button" class="vf-dialog__close-icon" data-dialog-close aria-label="Close">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <path d="M5 5l10 10M15 5L5 15" />
+        </svg>
+      </button>
+    </div>
+    <div class="vf-dialog__body">
+      <p class="vf-dialog__description" id="demo-dialog-description">
+        Calls, SMS and data stop right away. You can resume the line from this page within 90 days.
+      </p>
+    </div>
+    <div class="vf-dialog__footer">
+      <button type="button" class="vf-button vf-button--ghost vf-button--md" data-dialog-close>Keep line active</button>
+      <button type="button" class="vf-button vf-button--danger vf-button--md" data-dialog-close data-dialog-result="true">Suspend line</button>
+    </div>
+  </div>
+</div>

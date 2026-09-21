@@ -15,6 +15,7 @@ export { VfTabs, initTabs } from './components/tabs/tabs.js';
 export { VfTable, initTables } from './components/table/table.js';
 export { VfSidebarNav, initSidebarNavs } from './components/sidebar-nav/sidebar-nav.js';
 export { VfDrawer, initDrawers } from './components/drawer/drawer.js';
+export { VfDialog, initDialogs } from './components/dialog/dialog.js';
 
 // Components will be exported here as they are created
 // Example:
