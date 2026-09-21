@@ -40,7 +40,10 @@
     "migrate:start": "node scripts/migrate.js start",
     "migrate:resume": "node scripts/migrate.js resume",
     "migrate:status": "node scripts/migrate.js status",
-    "migrate:reset": "node scripts/migrate.js reset"
+    "migrate:reset": "node scripts/migrate.js reset",
+    "migrate:check-updates": "node scripts/check-updates.js",
+    "migrate:sync": "node scripts/migrate.js sync",
+    "migrate:add": "node scripts/migrate.js add"
   },
   "keywords": [
     "vodafone",

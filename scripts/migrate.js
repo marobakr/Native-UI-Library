@@ -159,6 +159,128 @@ function generateMigrationPrompt(state, mode = 'start') {
 }
 
 /**
+ * Generate sync prompt for re-migrating existing component
+ */
+function generateSyncPrompt(componentName, state) {
+  const prompt = [];
+  
+  prompt.push('# Component Sync (Re-migration)');
+  prompt.push('');
+  prompt.push(`## Re-migrate Component: ${componentName}`);
+  prompt.push('');
+  prompt.push('---');
+  prompt.push('');
+  prompt.push('## Instruction for GitHub Copilot Agent');
+  prompt.push('');
+  prompt.push('@native-ui-engineer');
+  prompt.push('');
+  prompt.push(`Re-migrate the **${componentName}** component from the Angular UI Library.`);
+  prompt.push('');
+  prompt.push('**Your Mission:**');
+  prompt.push(`Update the existing native implementation of **${componentName}** based on current Angular source.`);
+  prompt.push('');
+  prompt.push('1. **Read Configuration:**');
+  prompt.push('   - Read `.github/workflows/migration-workflow.md` for component migration steps');
+  prompt.push('   - Read `.github/agents/migration-agent.md` for operating principles');
+  prompt.push('   - Read `.github/skills/angular-to-native/SKILL.md` for conversion guidance');
+  prompt.push('');
+  prompt.push('2. **Source and Target:**');
+  prompt.push(`   - Component: ${componentName}`);
+  prompt.push(`   - Source: .temp/angular-ui-library/projects/ui/src/lib/${componentName}/`);
+  prompt.push(`   - Target: src/components/${componentName}/`);
+  prompt.push('');
+  prompt.push('3. **Execute Component Migration:**');
+  prompt.push(`   - Analyze ${componentName} component in Angular source`);
+  prompt.push(`   - Re-implement native version (overwrite existing files)`);
+  prompt.push('   - Update tests');
+  prompt.push('   - Update documentation');
+  prompt.push('   - Validate against Angular source');
+  prompt.push('');
+  prompt.push('4. **Key Rules:**');
+  prompt.push('   - ❌ NEVER invent design values');
+  prompt.push('   - ✅ ALWAYS extract from Angular source');
+  prompt.push('   - ✅ Record missing information in .migration/missing-info.json');
+  prompt.push('   - ✅ Verify every value against source');
+  prompt.push(`   - ✅ Update .migration/source-tracking.json for ${componentName}`);
+  prompt.push('');
+  prompt.push('5. **Output Files:**');
+  prompt.push(`   - Update: src/components/${componentName}/${componentName}.html`);
+  prompt.push(`   - Update: src/components/${componentName}/${componentName}.css`);
+  prompt.push(`   - Update: src/components/${componentName}/${componentName}.js`);
+  prompt.push(`   - Update: src/components/${componentName}/${componentName}.test.js`);
+  prompt.push(`   - Update: docs/components/${componentName}.md`);
+  prompt.push('');
+  prompt.push('---');
+  prompt.push('');
+  prompt.push(`**Now re-migrate ${componentName} component from Angular source.**`);
+  
+  return prompt.join('\n');
+}
+
+/**
+ * Generate add prompt for creating new component
+ */
+function generateAddPrompt(componentName, state) {
+  const prompt = [];
+  
+  prompt.push('# Add New Component');
+  prompt.push('');
+  prompt.push(`## Create Component: ${componentName}`);
+  prompt.push('');
+  prompt.push('---');
+  prompt.push('');
+  prompt.push('## Instruction for GitHub Copilot Agent');
+  prompt.push('');
+  prompt.push('@native-ui-engineer');
+  prompt.push('');
+  prompt.push(`Create a new native implementation of the **${componentName}** component from the Angular UI Library.`);
+  prompt.push('');
+  prompt.push('**Your Mission:**');
+  prompt.push(`Migrate **${componentName}** as a new component in the native library.`);
+  prompt.push('');
+  prompt.push('1. **Read Configuration:**');
+  prompt.push('   - Read `.github/workflows/migration-workflow.md` for component migration steps');
+  prompt.push('   - Read `.github/agents/migration-agent.md` for operating principles');
+  prompt.push('   - Read `.github/skills/angular-to-native/SKILL.md` for conversion guidance');
+  prompt.push('');
+  prompt.push('2. **Source and Target:**');
+  prompt.push(`   - Component: ${componentName} (NEW)`);
+  prompt.push(`   - Source: .temp/angular-ui-library/projects/ui/src/lib/${componentName}/`);
+  prompt.push(`   - Target: src/components/${componentName}/ (will be created)`);
+  prompt.push('');
+  prompt.push('3. **Execute Component Migration:**');
+  prompt.push(`   - Analyze ${componentName} component in Angular source`);
+  prompt.push('   - Create native implementation directory');
+  prompt.push('   - Implement HTML structure');
+  prompt.push('   - Implement CSS styles with design tokens');
+  prompt.push('   - Implement JavaScript behavior');
+  prompt.push('   - Create tests');
+  prompt.push('   - Create documentation');
+  prompt.push('   - Validate against Angular source');
+  prompt.push('');
+  prompt.push('4. **Key Rules:**');
+  prompt.push('   - ❌ NEVER invent design values');
+  prompt.push('   - ✅ ALWAYS extract from Angular source');
+  prompt.push('   - ✅ Record missing information in .migration/missing-info.json');
+  prompt.push('   - ✅ Verify every value against source');
+  prompt.push(`   - ✅ Add ${componentName} to .migration/manifest.json`);
+  prompt.push(`   - ✅ Create tracking entry in .migration/source-tracking.json`);
+  prompt.push('');
+  prompt.push('5. **Output Files (NEW):**');
+  prompt.push(`   - Create: src/components/${componentName}/${componentName}.html`);
+  prompt.push(`   - Create: src/components/${componentName}/${componentName}.css`);
+  prompt.push(`   - Create: src/components/${componentName}/${componentName}.js`);
+  prompt.push(`   - Create: src/components/${componentName}/${componentName}.test.js`);
+  prompt.push(`   - Create: docs/components/${componentName}.md`);
+  prompt.push('');
+  prompt.push('---');
+  prompt.push('');
+  prompt.push(`**Now create ${componentName} as a new native component from Angular source.**`);
+  
+  return prompt.join('\n');
+}
+
+/**
  * Show migration status
  */
 function showStatus(state) {
@@ -261,12 +383,65 @@ function main() {
       break;
     }
 
+    case 'sync': {
+      // Sync (re-migrate) existing component
+      const componentName = process.argv[3];
+      
+      if (!componentName) {
+        console.log('\n❌ Error: Component name required\n');
+        console.log('Usage: npm run migrate:sync <component-name>\n');
+        console.log('Example: npm run migrate:sync button\n');
+        return;
+      }
+      
+      console.log(`\n🔄 Syncing Component: ${componentName}\n`);
+      console.log('═══════════════════════════════════════\n');
+      
+      // Generate sync prompt
+      const prompt = generateSyncPrompt(componentName, state);
+      
+      console.log('📋 Copy the following prompt and paste into GitHub Copilot Chat:\n');
+      console.log('═══════════════════════════════════════\n');
+      console.log(prompt);
+      console.log('\n═══════════════════════════════════════\n');
+      console.log(`💡 Tip: This will re-migrate ${componentName} from Angular source.\n`);
+      break;
+    }
+
+    case 'add': {
+      // Add new component
+      const componentName = process.argv[3];
+      
+      if (!componentName) {
+        console.log('\n❌ Error: Component name required\n');
+        console.log('Usage: npm run migrate:add <component-name>\n');
+        console.log('Example: npm run migrate:add badge\n');
+        return;
+      }
+      
+      console.log(`\n🆕 Adding New Component: ${componentName}\n`);
+      console.log('═══════════════════════════════════════\n');
+      
+      // Generate add prompt
+      const prompt = generateAddPrompt(componentName, state);
+      
+      console.log('📋 Copy the following prompt and paste into GitHub Copilot Chat:\n');
+      console.log('═══════════════════════════════════════\n');
+      console.log(prompt);
+      console.log('\n═══════════════════════════════════════\n');
+      console.log(`💡 Tip: This will create ${componentName} as a new component.\n`);
+      break;
+    }
+
     default: {
       console.log('\n📖 Migration Commands:\n');
-      console.log('  npm run migrate:start   - Start fresh migration');
-      console.log('  npm run migrate:resume  - Resume from last checkpoint');
-      console.log('  npm run migrate:status  - Show current status');
-      console.log('  npm run migrate:reset   - Reset migration state');
+      console.log('  npm run migrate:start          - Start fresh migration');
+      console.log('  npm run migrate:resume         - Resume from last checkpoint');
+      console.log('  npm run migrate:status         - Show current status');
+      console.log('  npm run migrate:reset          - Reset migration state');
+      console.log('  npm run migrate:check-updates  - Check Angular repository for updates');
+      console.log('  npm run migrate:sync <name>    - Re-migrate existing component');
+      console.log('  npm run migrate:add <name>     - Add new component');
       console.log('');
     }
   }
